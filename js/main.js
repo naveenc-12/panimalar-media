@@ -41,16 +41,13 @@ No backend required.
     const menuToggle =
         document.getElementById("menuToggle");
 
-
     /*
-    =====================================================
-    FIX:
-    HTML uses "mobilenav"
-    =====================================================
+    IMPORTANT:
+    HTML uses id="mobileNav"
+    NOT id="mobilenav"
     */
-
     const mobileNav =
-        document.getElementById("mobilenav");
+        document.getElementById("mobileNav");
 
 
     /* =====================================================
@@ -63,9 +60,7 @@ No backend required.
             return;
         }
 
-
         mobileNav.classList.add("open");
-
 
         if (menuToggle) {
 
@@ -74,14 +69,11 @@ No backend required.
                 "true"
             );
 
-
             menuToggle.setAttribute(
                 "aria-label",
                 "Close navigation menu"
             );
-
         }
-
     }
 
 
@@ -91,9 +83,7 @@ No backend required.
             return;
         }
 
-
         mobileNav.classList.remove("open");
-
 
         if (menuToggle) {
 
@@ -102,14 +92,11 @@ No backend required.
                 "false"
             );
 
-
             menuToggle.setAttribute(
                 "aria-label",
                 "Open navigation menu"
             );
-
         }
-
     }
 
 
@@ -119,10 +106,8 @@ No backend required.
             return;
         }
 
-
         const isOpen =
             mobileNav.classList.contains("open");
-
 
         if (isOpen) {
 
@@ -133,7 +118,6 @@ No backend required.
             openMobileMenu();
 
         }
-
     }
 
 
@@ -151,9 +135,21 @@ No backend required.
         }
 
 
+        /*
+        Prevent duplicate click handlers if this
+        function is ever called again.
+        */
+
         menuToggle.addEventListener(
             "click",
-            toggleMobileMenu
+            function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                toggleMobileMenu();
+
+            }
         );
 
 
@@ -222,17 +218,13 @@ No backend required.
         /*
         Close menu when resizing back
         to desktop.
+
+        CSS switches to desktop at 1080px.
         */
 
         window.addEventListener(
             "resize",
             function () {
-
-                /*
-                FIX:
-                Your CSS switches to desktop
-                at 1080px.
-                */
 
                 if (
                     window.innerWidth >= 1080
@@ -461,7 +453,6 @@ No backend required.
 
 
                 relValues.add("noopener");
-
                 relValues.add("noreferrer");
 
 
@@ -513,7 +504,6 @@ No backend required.
 
                     openLightbox.hidden =
                         true;
-
 
                     document.body.style.overflow =
                         "";
