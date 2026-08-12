@@ -41,8 +41,16 @@ No backend required.
     const menuToggle =
         document.getElementById("menuToggle");
 
+
+    /*
+    =====================================================
+    FIX:
+    HTML uses "mobilenav"
+    =====================================================
+    */
+
     const mobileNav =
-        document.getElementById("mobileNav");
+        document.getElementById("mobilenav");
 
 
     /* =====================================================
@@ -66,12 +74,14 @@ No backend required.
                 "true"
             );
 
+
             menuToggle.setAttribute(
                 "aria-label",
                 "Close navigation menu"
             );
 
         }
+
     }
 
 
@@ -92,12 +102,14 @@ No backend required.
                 "false"
             );
 
+
             menuToggle.setAttribute(
                 "aria-label",
                 "Open navigation menu"
             );
 
         }
+
     }
 
 
@@ -121,6 +133,7 @@ No backend required.
             openMobileMenu();
 
         }
+
     }
 
 
@@ -182,11 +195,15 @@ No backend required.
 
 
                 const clickedInsideMenu =
-                    mobileNav.contains(event.target);
+                    mobileNav.contains(
+                        event.target
+                    );
 
 
                 const clickedToggle =
-                    menuToggle.contains(event.target);
+                    menuToggle.contains(
+                        event.target
+                    );
 
 
                 if (
@@ -211,8 +228,14 @@ No backend required.
             "resize",
             function () {
 
+                /*
+                FIX:
+                Your CSS switches to desktop
+                at 1080px.
+                */
+
                 if (
-                    window.innerWidth > 900
+                    window.innerWidth >= 1080
                 ) {
 
                     closeMobileMenu();
@@ -221,6 +244,7 @@ No backend required.
 
             }
         );
+
     }
 
 
@@ -307,6 +331,7 @@ No backend required.
 
             }
         );
+
     }
 
 
@@ -383,6 +408,7 @@ No backend required.
 
             }
         );
+
     }
 
 
@@ -435,6 +461,7 @@ No backend required.
 
 
                 relValues.add("noopener");
+
                 relValues.add("noreferrer");
 
 
@@ -445,6 +472,7 @@ No backend required.
 
             }
         );
+
     }
 
 
@@ -494,6 +522,7 @@ No backend required.
 
             }
         );
+
     }
 
 
@@ -552,6 +581,7 @@ No backend required.
 
             }
         );
+
     }
 
 
@@ -606,6 +636,7 @@ No backend required.
 
             }
         );
+
     }
 
 
