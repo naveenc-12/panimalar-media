@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resources - Panimalar Media Admin</title>
+
+    <!-- EXISTING ADMIN CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="admin-sidebar">
+
+            <!-- BRAND -->
+            <div class="admin-sidebar-brand">
+
+                <div class="admin-sidebar-logo">
+                    PM
+                </div>
+
+                <div class="admin-sidebar-brand-text">
+                    <strong>Panimalar Media</strong>
+                    <span>Admin Panel</span>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav class="admin-nav">
+
+                <!-- OVERVIEW -->
+                <div class="admin-nav-section">
+                    OVERVIEW
+                </div>
+
+                <a
+                    href="index.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <!-- CONTENT -->
+                <div class="admin-nav-section">
+                    CONTENT
+                </div>
+
+                <a
+                    href="events.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">◷</span>
+                    <span>Events</span>
+                </a>
+
+                <a
+                    href="announcements.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">!</span>
+                    <span>Announcements</span>
+                </a>
+
+                <a
+                    href="resources.html"
+                    class="admin-nav-item active"
+                >
+                    <span class="admin-nav-icon">▤</span>
+                    <span>Resources</span>
+                </a>
+
+                <a
+                    href="gallery.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▧</span>
+                    <span>Gallery</span>
+                </a>
+
+                <a
+                    href="bus-routes.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▱</span>
+                    <span>Bus Routes</span>
+                </a>
+
+
+                <!-- COMMUNITY -->
+                <div class="admin-nav-section">
+                    COMMUNITY
+                </div>
+
+                <a
+                    href="questions.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">?</span>
+                    <span>Questions</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="admin-sidebar-bottom">
+
+                <div class="admin-user-mini">
+
+                    <div class="admin-user-avatar">
+                        P
+                    </div>
+
+                    <div class="admin-user-info">
+                        <strong>Panimalar Media Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="admin-logout-button"
+                    id="signOutBtn"
+                >
+                    Sign out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="admin-main">
+
+            <div class="admin-page">
+
+                <!-- PAGE HEADER -->
+                <div class="admin-page-header">
+
+                    <div>
+
+                        <h1>
+                            Resources
+                        </h1>
+
+                        <p>
+                            Create and manage useful resources shown on the website.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="../resources.html"
+                        target="_blank"
+                        class="admin-btn admin-btn-secondary"
+                    >
+                        ↗ View Public Page
+                    </a>
+
+                </div>
+
+
+                <!-- =================================================
+                     STATISTICS
+                ================================================== -->
+
+                <section class="admin-stats">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-top">
+
+                            <span>
+                                Total Resources
+                            </span>
+
+                            <span class="admin-stat-icon">
+                                ▤
+                            </span>
+
+                        </div>
+
+                        <strong id="totalResources">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-top">
+
+                            <span>
+                                Published
+                            </span>
+
+                            <span class="admin-stat-icon">
+                                ✓
+                            </span>
+
+                        </div>
+
+                        <strong id="publishedResources">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-top">
+
+                            <span>
+                                Hidden
+                            </span>
+
+                            <span class="admin-stat-icon">
+                                !
+                            </span>
+
+                        </div>
+
+                        <strong id="hiddenResources">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-top">
+
+                            <span>
+                                Categories
+                            </span>
+
+                            <span class="admin-stat-icon">
+                                #
+                            </span>
+
+                        </div>
+
+                        <strong id="resourceCategoriesCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CREATE + EXISTING RESOURCES
+                ================================================== -->
+
+                <div class="resource-admin-grid">
+
+
+                    <!-- =============================================
+                         CREATE RESOURCE
+                    ============================================== -->
+
+                    <section class="admin-panel">
+
+                        <div class="admin-panel-header">
+
+                            <div>
+
+                                <h2 id="resourceFormTitle">
+                                    Create Resource
+                                </h2>
+
+                                <p>
+                                    Add a useful resource for students.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            id="resourceForm"
+                            class="admin-form"
+                        >
+
+                            <!-- Hidden ID -->
+                            <input
+                                type="hidden"
+                                id="resourceId"
+                            >
+
+
+                            <!-- TITLE -->
+                            <div class="admin-form-group">
+
+                                <label for="resourceTitle">
+                                    Title
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="resourceTitle"
+                                    placeholder="Enter resource title"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- DESCRIPTION -->
+                            <div class="admin-form-group">
+
+                                <label for="resourceDescription">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="resourceDescription"
+                                    rows="5"
+                                    placeholder="Describe the resource..."
+                                ></textarea>
+
+                            </div>
+
+
+                            <!-- CATEGORY -->
+                            <div class="admin-form-group">
+
+                                <label for="resourceCategory">
+                                    Category
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="resourceCategory"
+                                    placeholder="Example: Notes"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- RESOURCE TYPE -->
+                            <div class="admin-form-group">
+
+                                <label for="resourceType">
+                                    Resource Type
+                                </label>
+
+                                <select id="resourceType">
+
+                                    <option value="document">
+                                        Document
+                                    </option>
+
+                                    <option value="template">
+                                        Template
+                                    </option>
+
+                                    <option value="link">
+                                        Link
+                                    </option>
+
+                                    <option value="guide">
+                                        Guide
+                                    </option>
+
+                                    <option value="tool">
+                                        Tool
+                                    </option>
+
+                                    <option value="video">
+                                        Video
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- RESOURCE URL -->
+                            <div class="admin-form-group">
+
+                                <label for="resourceLink">
+                                    Resource URL
+                                </label>
+
+                                <input
+                                    type="url"
+                                    id="resourceLink"
+                                    placeholder="https://..."
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- THUMBNAIL URL -->
+                            <div class="admin-form-group">
+
+                                <label for="resourceThumbnail">
+
+                                    Thumbnail URL
+
+                                    <span class="admin-form-hint">
+                                        (optional)
+                                    </span>
+
+                                </label>
+
+                                <input
+                                    type="url"
+                                    id="resourceThumbnail"
+                                    placeholder="https://..."
+                                >
+
+                            </div>
+
+
+                            <!-- FEATURED -->
+                            <label class="admin-checkbox">
+
+                                <input
+                                    type="checkbox"
+                                    id="resourceFeatured"
+                                >
+
+                                <span>
+                                    Feature this resource
+                                </span>
+
+                            </label>
+
+
+                            <!-- PUBLISHED -->
+                            <label class="admin-checkbox">
+
+                                <input
+                                    type="checkbox"
+                                    id="resourcePublished"
+                                    checked
+                                >
+
+                                <span>
+                                    Publish this resource
+                                </span>
+
+                            </label>
+
+
+                            <!-- FORM BUTTONS -->
+                            <div class="admin-form-buttons">
+
+                                <button
+                                    type="submit"
+                                    class="admin-btn admin-btn-primary"
+                                    id="saveResourceBtn"
+                                >
+                                    Add Resource
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="admin-btn admin-btn-secondary"
+                                    id="cancelEditBtn"
+                                    hidden
+                                >
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- =============================================
+                         EXISTING RESOURCES
+                    ============================================== -->
+
+                    <section class="admin-panel">
+
+                        <div class="admin-panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Existing Resources
+                                </h2>
+
+                                <p>
+                                    Edit, publish or delete resources.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SEARCH -->
+                        <div class="admin-search">
+
+                            <span>
+                                🔎
+                            </span>
+
+                            <input
+                                type="search"
+                                id="resourceSearch"
+                                placeholder="Search resources..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- CATEGORY FILTERS -->
+                        <div
+                            class="admin-filter-row"
+                            id="resourceFilters"
+                        >
+
+                            <button
+                                type="button"
+                                class="admin-filter active"
+                                data-category="All"
+                            >
+                                All
+                            </button>
+
+                        </div>
+
+
+                        <!-- RESOURCE LIST -->
+                        <div
+                            id="resourcesList"
+                            class="admin-resource-list"
+                        >
+
+                            <div class="admin-loading">
+                                Loading resources...
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+                <div
+                    id="resourceMessage"
+                    class="admin-message"
+                    hidden
+                ></div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         SUPABASE LIBRARY
+    ========================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =========================================================
+         YOUR EXISTING SUPABASE CONNECTION
+    ========================================================== -->
+
+    <script src="../js/supabase.js"></script>
+
+
+    <!-- =========================================================
+         ADMIN AUTH
+    ========================================================== -->
+
+    <script src="../js/admin/auth.js"></script>
+
+
+    <!-- =========================================================
+         RESOURCES SCRIPT
+    ========================================================== -->
+
+    <script src="../js/admin/resources.js"></script>
+
+</body>
+
+</html>

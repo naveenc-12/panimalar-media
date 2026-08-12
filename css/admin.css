@@ -1,0 +1,2733 @@
+/* =========================================================
+   PANIMALAR MEDIA — COMMON ADMIN CSS
+   ========================================================= */
+
+:root {
+    --admin-bg: #08090d;
+    --admin-sidebar: #0b0c11;
+    --admin-card: #111219;
+    --admin-card-2: #15161e;
+    --admin-border: #242631;
+
+    --admin-text: #f5f5f7;
+    --admin-muted: #8d8f9f;
+
+    --admin-purple: #9b4dff;
+    --admin-purple-light: #c58aff;
+    --admin-pink: #dc3fa3;
+
+    --admin-danger: #ef5350;
+    --admin-success: #27d98b;
+
+    --admin-radius: 18px;
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: var(--admin-bg);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ADMIN LAYOUT
+   ========================================================= */
+
+.admin-layout {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 322px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--admin-sidebar);
+    border-right: 1px solid var(--admin-border);
+
+    z-index: 1000;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   SIDEBAR BRAND
+   ========================================================= */
+
+.admin-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 34px 32px 28px;
+
+    flex-shrink: 0;
+}
+
+.admin-sidebar-logo {
+    width: 54px;
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a84dff,
+            #dc3fa3
+        );
+
+    color: #fff;
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.admin-sidebar-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.admin-sidebar-brand-text strong {
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 750;
+}
+
+.admin-sidebar-brand-text span {
+    color: var(--admin-muted);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.admin-nav {
+    padding: 8px 20px 20px;
+}
+
+.admin-nav-section {
+    margin: 25px 12px 12px;
+
+    color: #777989;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    width: 100%;
+    min-height: 52px;
+
+    padding: 0 16px;
+    margin-bottom: 5px;
+
+    border-radius: 13px;
+
+    color: #9a9baa;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.admin-nav-item:hover {
+    background: rgba(155, 77, 255, 0.09);
+    color: #fff;
+}
+
+.admin-nav-item.active {
+    background: rgba(155, 77, 255, 0.17);
+    color: #d19cff;
+}
+
+.admin-nav-icon {
+    width: 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    color: #b56dff;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.admin-sidebar-bottom {
+    margin-top: auto;
+
+    padding: 18px 20px 24px;
+
+    border-top: 1px solid var(--admin-border);
+
+    flex-shrink: 0;
+}
+
+.admin-user-mini {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 8px 10px 18px;
+}
+
+.admin-user-avatar {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #26144a;
+    color: #c58aff;
+
+    font-weight: 700;
+}
+
+.admin-user-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.admin-user-info strong {
+    color: #fff;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-user-info span {
+    color: var(--admin-muted);
+    font-size: 12px;
+}
+
+.admin-logout-button {
+    width: 100%;
+
+    border: 0;
+
+    padding: 14px;
+
+    border-radius: 11px;
+
+    background: rgba(239, 83, 80, 0.08);
+
+    color: #ff8b88;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.admin-logout-button:hover {
+    background: rgba(239, 83, 80, 0.16);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.admin-main {
+    width: calc(100% - 322px);
+
+    margin-left: 322px;
+
+    min-height: 100vh;
+
+    padding: 52px 40px 80px;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.admin-topbar {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto 42px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.admin-page-title h1 {
+    margin: 0 0 10px;
+
+    color: #fff;
+
+    font-size: 38px;
+    line-height: 1.15;
+    font-weight: 750;
+}
+
+.admin-page-title p {
+    margin: 0;
+
+    color: var(--admin-muted);
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.admin-view-site {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.015);
+
+    color: #ddd;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.admin-view-site:hover {
+    border-color: #7040a8;
+    background: rgba(155, 77, 255, 0.08);
+    color: #fff;
+}
+
+
+/* =========================================================
+   GENERIC ADMIN GRID
+   ========================================================= */
+
+.announcement-admin-grid {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   GENERIC PANEL
+   ========================================================= */
+
+.admin-panel {
+    width: 100%;
+    min-width: 0;
+
+    padding: 28px;
+
+    background: var(--admin-card);
+
+    border: 1px solid var(--admin-border);
+
+    border-radius: var(--admin-radius);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.admin-panel-header {
+    margin-bottom: 30px;
+}
+
+.admin-panel-header h2 {
+    margin: 0 0 7px;
+
+    color: #fff;
+
+    font-size: 23px;
+    line-height: 1.25;
+    font-weight: 750;
+}
+
+.admin-panel-header p {
+    margin: 0;
+
+    color: var(--admin-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.admin-form-group {
+    width: 100%;
+
+    margin-bottom: 22px;
+}
+
+.admin-form-group label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #e7e7eb;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-form-group input,
+.admin-form-group textarea,
+.admin-form-group select {
+    width: 100%;
+    max-width: 100%;
+
+    display: block;
+
+    border: 1px solid #292b36;
+    border-radius: 11px;
+
+    outline: none;
+
+    background: var(--admin-card-2);
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.admin-form-group input,
+.admin-form-group select {
+    height: 50px;
+    padding: 0 15px;
+}
+
+.admin-form-group textarea {
+    min-height: 150px;
+
+    padding: 14px 15px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.admin-form-group input::placeholder,
+.admin-form-group textarea::placeholder {
+    color: #696b78;
+}
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus,
+.admin-form-group select:focus {
+    border-color: var(--admin-purple);
+
+    box-shadow:
+        0 0 0 3px rgba(155, 77, 255, 0.12);
+
+    background: #181922;
+}
+
+
+/* =========================================================
+   FORM ROW
+   ========================================================= */
+
+.admin-form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.admin-checkbox {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 8px 0 24px;
+}
+
+.admin-checkbox input {
+    width: 18px;
+    height: 18px;
+
+    margin: 0;
+
+    accent-color: var(--admin-purple);
+
+    cursor: pointer;
+}
+
+.admin-checkbox label {
+    margin: 0;
+
+    color: #d5d5da;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.admin-form-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.admin-primary-button,
+.admin-secondary-button,
+.admin-btn {
+    min-height: 48px;
+
+    padding: 0 20px;
+
+    border-radius: 11px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-primary-button,
+.admin-btn-primary {
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9948ff,
+            #db3da0
+        );
+
+    color: #fff;
+
+    box-shadow:
+        0 8px 22px rgba(155, 77, 255, 0.18);
+}
+
+.admin-primary-button {
+    flex: 1;
+}
+
+.admin-primary-button:hover,
+.admin-btn-primary:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 28px rgba(155, 77, 255, 0.25);
+}
+
+.admin-secondary-button,
+.admin-btn-secondary {
+    border: 1px solid var(--admin-border);
+
+    background: transparent;
+
+    color: #ddd;
+}
+
+.admin-secondary-button:hover,
+.admin-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-btn-danger {
+    border: 1px solid rgba(239, 83, 80, 0.2);
+
+    background: rgba(239, 83, 80, 0.08);
+
+    color: #ff8581;
+}
+
+.admin-btn-danger:hover {
+    background: rgba(239, 83, 80, 0.15);
+    border-color: rgba(239, 83, 80, 0.3);
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT LIST
+   ========================================================= */
+
+.admin-announcement-list,
+#announcementsList,
+#existingAnnouncements,
+#announcementList {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT CARD
+   Supports BOTH old and new JS class names
+   ========================================================= */
+
+.announcement-item,
+.admin-announcement-item {
+    width: 100%;
+    min-width: 0;
+
+    padding: 22px;
+
+    background: #15161e;
+
+    border: 1px solid #292b36;
+
+    border-radius: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.announcement-item:hover,
+.admin-announcement-item:hover {
+    border-color: #3b3d4b;
+
+    background: #171821;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT HEADER
+   ========================================================= */
+
+.announcement-item-header,
+.admin-announcement-top {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.announcement-badges,
+.admin-announcement-badges {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.announcement-badge,
+.admin-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    min-height: 27px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.announcement-badge-category,
+.admin-badge-category {
+    background: rgba(155, 77, 255, 0.14);
+
+    border: 1px solid rgba(155, 77, 255, 0.25);
+
+    color: #c28cff;
+}
+
+.announcement-badge-status,
+.admin-badge-published {
+    background: rgba(39, 217, 139, 0.10);
+
+    border: 1px solid rgba(39, 217, 139, 0.18);
+
+    color: #54e7a3;
+}
+
+.announcement-badge-pending,
+.admin-badge-draft {
+    background: rgba(255, 193, 7, 0.10);
+
+    border: 1px solid rgba(255, 193, 7, 0.18);
+
+    color: #ffd45a;
+}
+
+.announcement-badge-hidden {
+    background: rgba(239, 83, 80, 0.10);
+
+    border: 1px solid rgba(239, 83, 80, 0.18);
+
+    color: #ff8581;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT ACTIONS
+   ========================================================= */
+
+.announcement-actions,
+.admin-announcement-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+.announcement-actions .admin-btn,
+.admin-announcement-actions button {
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    border-radius: 9px;
+
+    border: 1px solid #292b36;
+
+    background: #1b1c24;
+
+    color: #e7e7eb;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.announcement-actions .admin-btn:hover,
+.admin-announcement-actions button:hover {
+    background: #242631;
+
+    border-color: #3b3d4b;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT TITLE
+   ========================================================= */
+
+.announcement-item-title,
+.admin-announcement-item h3 {
+    margin: 0 0 8px;
+
+    color: #fff;
+
+    font-size: 19px;
+    line-height: 1.35;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT CONTENT
+   ========================================================= */
+
+.announcement-item-content,
+.admin-announcement-item p {
+    margin: 0 0 14px;
+
+    color: #9294a1;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT META
+   ========================================================= */
+
+.announcement-item-meta,
+.admin-announcement-meta {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 4px;
+
+    color: #777989;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.admin-loading {
+    min-height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: var(--admin-muted);
+
+    font-size: 14px;
+}
+
+.admin-spinner {
+    width: 34px;
+    height: 34px;
+
+    border: 3px solid #292b36;
+
+    border-top-color: var(--admin-purple);
+
+    border-radius: 50%;
+
+    animation:
+        adminSpin 0.8s linear infinite;
+}
+
+@keyframes adminSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.admin-empty,
+.admin-empty-state {
+    width: 100%;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    color: var(--admin-muted);
+}
+
+.admin-empty-icon {
+    width: 46px;
+    height: 46px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(155, 77, 255, 0.12);
+
+    color: var(--admin-purple-light);
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.admin-empty-state h3 {
+    margin: 0 0 8px;
+
+    color: #fff;
+
+    font-size: 17px;
+}
+
+.admin-empty-state p {
+    margin: 0;
+
+    color: var(--admin-muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.admin-error-state {
+    width: 100%;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+.admin-error-icon {
+    width: 46px;
+    height: 46px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(239, 83, 80, 0.1);
+
+    color: #ff8581;
+
+    font-weight: 800;
+}
+
+.admin-error-state h3 {
+    margin: 0 0 8px;
+
+    color: #fff;
+
+    font-size: 17px;
+}
+
+.admin-error-state p {
+    max-width: 600px;
+
+    margin: 0 auto 18px;
+
+    color: #9294a1;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM MESSAGE
+   ========================================================= */
+
+.admin-form-message {
+    display: none;
+
+    margin-bottom: 18px;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.admin-form-message.success {
+    display: block;
+
+    background: rgba(39, 217, 139, 0.08);
+
+    border: 1px solid rgba(39, 217, 139, 0.2);
+
+    color: #5ff0ad;
+}
+
+.admin-form-message.error {
+    display: block;
+
+    background: rgba(239, 83, 80, 0.08);
+
+    border: 1px solid rgba(239, 83, 80, 0.2);
+
+    color: #ff8b88;
+}
+
+
+/* =========================================================
+   DISABLED BUTTONS
+   ========================================================= */
+
+button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   TABLE / GENERIC CONTENT SUPPORT
+   ========================================================= */
+
+.admin-table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--admin-border);
+
+    border-radius: 14px;
+}
+
+.admin-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-table th {
+    color: #aaa;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
+.admin-table td {
+    color: #ddd;
+
+    font-size: 14px;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+   ========================================================= */
+
+.admin-stats-grid {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto 28px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.admin-stat-card {
+    min-width: 0;
+
+    padding: 26px;
+
+    background: var(--admin-card);
+
+    border: 1px solid var(--admin-border);
+
+    border-radius: var(--admin-radius);
+}
+
+.admin-stat-card-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.admin-stat-card-label {
+    color: var(--admin-muted);
+
+    font-size: 14px;
+}
+
+.admin-stat-card-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(155, 77, 255, 0.13);
+
+    color: #c58aff;
+
+    font-size: 20px;
+}
+
+.admin-stat-card-value {
+    margin-top: 24px;
+
+    color: #fff;
+
+    font-size: 42px;
+    line-height: 1;
+
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   SEARCH / FILTERS
+   ========================================================= */
+
+.admin-toolbar {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.admin-search {
+    position: relative;
+
+    flex: 1;
+}
+
+.admin-search input {
+    width: 100%;
+
+    height: 52px;
+
+    padding: 0 16px 0 48px;
+
+    background: var(--admin-card);
+
+    border: 1px solid var(--admin-border);
+
+    border-radius: 12px;
+
+    color: #fff;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.admin-search input:focus {
+    border-color: var(--admin-purple);
+
+    box-shadow:
+        0 0 0 3px rgba(155, 77, 255, 0.12);
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1200
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .admin-sidebar {
+        width: 280px;
+    }
+
+    .admin-main {
+        width: calc(100% - 280px);
+
+        margin-left: 280px;
+
+        padding: 40px 28px 60px;
+    }
+
+    .announcement-admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 800
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .admin-layout {
+        display: block;
+    }
+
+    .admin-sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        border-right: 0;
+
+        border-bottom: 1px solid var(--admin-border);
+    }
+
+    .admin-main {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 30px 18px 50px;
+    }
+
+    .admin-topbar {
+        flex-direction: column;
+
+        margin-bottom: 30px;
+    }
+
+    .admin-view-site {
+        width: 100%;
+    }
+
+    .admin-page-title h1 {
+        font-size: 31px;
+    }
+
+    .admin-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .announcement-item-header,
+    .admin-announcement-top {
+        flex-direction: column;
+    }
+
+    .announcement-actions,
+    .admin-announcement-actions {
+        width: 100%;
+    }
+
+    .announcement-actions .admin-btn,
+    .admin-announcement-actions button {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 520
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .admin-sidebar-brand {
+        padding: 24px 20px;
+    }
+
+    .admin-nav {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .admin-panel {
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .admin-main {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .admin-form-buttons {
+        flex-direction: column;
+    }
+
+    .admin-primary-button,
+    .admin-secondary-button {
+        width: 100%;
+    }
+
+    .admin-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .announcement-item,
+    .admin-announcement-item {
+        padding: 18px;
+    }
+
+    .announcement-item-title,
+    .admin-announcement-item h3 {
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   FINAL FIXES
+   ========================================================= */
+
+.admin-content-page {
+    min-height: 100vh;
+
+    background: var(--admin-bg);
+
+    color: var(--admin-text);
+}
+
+
+/* Never create an unnecessary second main scrollbar */
+
+.admin-main {
+    overflow: visible;
+}
+
+
+/* Prevent long content from breaking layout */
+
+.admin-panel,
+.announcement-item,
+.admin-announcement-item {
+    overflow-wrap: anywhere;
+}
+
+
+/* Select dropdown */
+
+select option {
+    background: #15161e;
+    color: #fff;
+}
+
+
+/* Links */
+
+.admin-main a {
+    color: inherit;
+}
+
+
+/* Images */
+
+.admin-main img {
+    max-width: 100%;
+}
+
+/* =========================================================
+   ADMIN EVENTS
+========================================================= */
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+
+/* EVENT CARD */
+
+.event-item {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    background: #14141b;
+    border: 1px solid #252631;
+    border-radius: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.event-item:hover {
+    border-color: rgba(139, 92, 246, 0.45);
+    background: #171720;
+}
+
+
+/* EVENT HEADER */
+
+.event-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* TITLE */
+
+.event-title {
+    margin: 0;
+
+    color: #f5f5f7;
+
+    font-size: 18px;
+    line-height: 1.4;
+
+    font-weight: 700;
+}
+
+
+/* META */
+
+.event-meta {
+    margin-top: 8px;
+
+    color: #858594;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* BADGES */
+
+.badges {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+}
+
+
+/* BADGE */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: rgba(139, 92, 246, 0.12);
+
+    border: 1px solid rgba(139, 92, 246, 0.25);
+
+    color: #c4b5fd;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* PUBLISHED */
+
+.badge.green {
+    background: rgba(34, 197, 94, 0.10);
+
+    border-color: rgba(34, 197, 94, 0.22);
+
+    color: #86efac;
+}
+
+
+/* DRAFT */
+
+.badge.red {
+    background: rgba(239, 68, 68, 0.10);
+
+    border-color: rgba(239, 68, 68, 0.22);
+
+    color: #fca5a5;
+}
+
+
+/* ACTIONS */
+
+.event-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #24252e;
+}
+
+
+/* BUTTON */
+
+.event-actions .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+
+    padding: 8px 14px;
+
+    border-radius: 9px;
+
+    border: 1px solid #2b2c36;
+
+    background: #1b1c24;
+
+    color: #e8e8ee;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.event-actions .btn:hover {
+    background: #24252f;
+
+    border-color: #41424e;
+
+    transform: translateY(-1px);
+}
+
+
+.event-actions .btn:active {
+    transform: translateY(0);
+}
+
+
+/* DELETE */
+
+.event-actions .btn.danger {
+    color: #ff9da8;
+
+    background: #1b1013;
+
+    border-color: #48252c;
+}
+
+
+.event-actions .btn.danger:hover {
+    background: #281317;
+
+    border-color: #6b303a;
+}
+
+
+/* LOADING */
+
+.event-list .loading {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+
+    color: #858594;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* EMPTY / ERROR */
+
+.event-list .empty {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    color: #858594;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    border: 1px dashed #292a34;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.01);
+}
+
+
+/* =========================================================
+   EVENTS RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .event-head {
+        flex-direction: column;
+    }
+
+    .badges {
+        justify-content: flex-start;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .event-item {
+        padding: 16px;
+    }
+
+    .event-title {
+        font-size: 16px;
+    }
+
+    .event-meta {
+        font-size: 12px;
+    }
+
+    .event-actions {
+        flex-wrap: wrap;
+    }
+
+    .event-actions .btn {
+        flex: 1;
+        min-width: 90px;
+    }
+
+}
+
+/* =========================================================
+   RESOURCE FILTER BUTTON FIX
+   ========================================================= */
+
+.admin-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0 20px;
+}
+
+.admin-filter {
+    appearance: none;
+    -webkit-appearance: none;
+
+    min-height: 38px;
+    padding: 0 15px;
+
+    border: 1px solid #292b36;
+    border-radius: 999px;
+
+    background: #15161e;
+    color: #9a9baa;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-filter:hover {
+    background: rgba(155, 77, 255, 0.08);
+    border-color: rgba(155, 77, 255, 0.4);
+    color: #ffffff;
+}
+
+.admin-filter.active {
+    background: rgba(155, 77, 255, 0.16);
+    border-color: rgba(155, 77, 255, 0.55);
+    color: #c98cff;
+}
+
+.admin-filter:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(155, 77, 255, 0.12);
+}
+
+
+/* =========================================================
+   RESOURCE SEARCH
+   ========================================================= */
+
+.admin-search {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.admin-search input {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 16px 0 44px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #292b36;
+    border-radius: 11px;
+
+    background: #15161e;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+.admin-search input::placeholder {
+    color: #696b78;
+}
+
+.admin-search input:focus {
+    border-color: #9b4dff;
+    box-shadow: 0 0 0 3px rgba(155, 77, 255, 0.12);
+}
+
+
+/* =========================================================
+   RESOURCE EMPTY STATE
+   ========================================================= */
+
+.admin-empty-state {
+    min-height: 260px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+.admin-empty-state-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    background: rgba(155, 77, 255, 0.12);
+
+    color: #c98cff;
+
+    font-size: 24px;
+}
+
+.admin-empty-state h3 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+.admin-empty-state p {
+    margin: 0;
+
+    color: #858794;
+
+    font-size: 14px;
+}
+
+/* =========================================================
+   RESOURCES ADMIN PAGE — FINAL CSS OVERRIDE
+   CSS ONLY — DO NOT CHANGE JS / HTML
+   ========================================================= */
+
+/* ---------- PAGE RESET ---------- */
+
+body:has(#resourceForm) {
+    margin: 0;
+    min-height: 100vh;
+    background: #090a0f;
+    color: #f5f5f7;
+    overflow-x: hidden;
+}
+
+body:has(#resourceForm) *,
+body:has(#resourceForm) *::before,
+body:has(#resourceForm) *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ADMIN SIDEBAR
+   ========================================================= */
+
+body:has(#resourceForm) .admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 322px;
+    min-width: 322px;
+
+    background: #0b0c11;
+    border-right: 1px solid #242631;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   MAIN AREA
+   ========================================================= */
+
+body:has(#resourceForm) .admin-main {
+    margin-left: 322px;
+    width: calc(100% - 322px);
+    min-height: 100vh;
+
+    padding: 56px 56px 80px;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   CONTENT WIDTH
+   ========================================================= */
+
+body:has(#resourceForm) .admin-content,
+body:has(#resourceForm) .admin-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+body:has(#resourceForm) .admin-page-header {
+    margin-bottom: 32px;
+}
+
+body:has(#resourceForm) .admin-page-header h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+body:has(#resourceForm) .admin-page-header p {
+    margin: 0;
+    color: #9699a8;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   VIEW PUBLIC PAGE BUTTON
+   ========================================================= */
+
+body:has(#resourceForm) .admin-page-header a,
+body:has(#resourceForm) .view-public-btn {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 22px;
+    padding: 10px 20px;
+
+    border: 1px solid #292c38;
+    border-radius: 999px;
+
+    color: #f3f3f5;
+    background: #111219;
+
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+body:has(#resourceForm) .admin-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    width: 100%;
+    margin: 28px 0 48px;
+}
+
+body:has(#resourceForm) .admin-stat-card {
+    min-width: 0;
+    min-height: 120px;
+
+    padding: 28px 32px;
+
+    background: #111219;
+    border: 1px solid #292c38;
+    border-radius: 22px;
+}
+
+body:has(#resourceForm) .admin-stat-card h3,
+body:has(#resourceForm) .admin-stat-card .stat-label {
+    margin: 0 0 12px;
+
+    color: #a1a4b3;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+body:has(#resourceForm) .admin-stat-card strong,
+body:has(#resourceForm) .admin-stat-card .stat-value {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CREATE + EXISTING RESOURCE COLUMNS
+   ========================================================= */
+
+body:has(#resourceForm) .resource-admin-grid,
+body:has(#resourceForm) .resources-admin-grid,
+body:has(#resourceForm) .admin-resource-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 36px;
+
+    width: 100%;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   CREATE / EXISTING CARDS
+   ========================================================= */
+
+body:has(#resourceForm) .admin-panel,
+body:has(#resourceForm) .admin-card,
+body:has(#resourceForm) .resource-panel {
+    width: 100%;
+    min-width: 0;
+
+    background: #111219;
+
+    border: 1px solid #292c38;
+    border-radius: 24px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FORM PANEL
+   ========================================================= */
+
+body:has(#resourceForm) #resourceForm {
+    width: 100%;
+    min-width: 0;
+
+    padding: 32px;
+}
+
+
+/* =========================================================
+   FORM HEADER
+   ========================================================= */
+
+body:has(#resourceForm) #resourceFormTitle {
+    margin: 0 0 10px;
+
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+   ========================================================= */
+
+body:has(#resourceForm) label {
+    display: block;
+
+    margin: 0 0 9px;
+
+    color: #f2f2f4;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+body:has(#resourceForm) input,
+body:has(#resourceForm) textarea,
+body:has(#resourceForm) select {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 16px 18px;
+
+    border: 1px solid #292c38;
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #171821;
+    color: #f5f5f7;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+body:has(#resourceForm) textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+
+body:has(#resourceForm) input:focus,
+body:has(#resourceForm) textarea:focus,
+body:has(#resourceForm) select:focus {
+    border-color: #9b4dff;
+
+    box-shadow:
+        0 0 0 3px rgba(155, 77, 255, .12);
+}
+
+
+/* =========================================================
+   FORM GROUP SPACING
+   ========================================================= */
+
+body:has(#resourceForm) .form-group,
+body:has(#resourceForm) .admin-form-group {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   TWO-COLUMN SMALL FORM FIELDS
+   ========================================================= */
+
+body:has(#resourceForm) .form-row,
+body:has(#resourceForm) .admin-form-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+body:has(#resourceForm) input[type="checkbox"] {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    margin: 0 10px 0 0;
+
+    accent-color: #a64dff;
+
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+body:has(#resourceForm) button {
+    font-family: inherit;
+}
+
+body:has(#resourceForm) #saveResourceBtn {
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 10px;
+
+    border: 0;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9b4dff,
+            #df3ea7
+        );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(157, 65, 255, .18);
+}
+
+body:has(#resourceForm) #saveResourceBtn:hover {
+    filter: brightness(1.08);
+}
+
+body:has(#resourceForm) #saveResourceBtn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   EXISTING RESOURCES PANEL
+   ========================================================= */
+
+body:has(#resourceForm) #resourcesList {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+body:has(#resourceForm) #resourceSearch {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+body:has(#resourceForm) #resourceFilters {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin: 0 0 24px;
+}
+
+body:has(#resourceForm) .admin-filter {
+    flex: 0 0 auto;
+
+    padding: 10px 18px;
+
+    border: 1px solid #2a2d39;
+    border-radius: 999px;
+
+    background: #111219;
+    color: #9699a8;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body:has(#resourceForm) .admin-filter.active {
+    border-color: #9749f5;
+
+    background: rgba(151, 73, 245, .18);
+
+    color: #d9baff;
+}
+
+
+/* =========================================================
+   RESOURCE LIST
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   RESOURCE ITEM
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-item {
+    display: flex;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 24px;
+
+    background: #15161e;
+
+    border: 1px solid #292c38;
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+body:has(#resourceForm) .admin-resource-content {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   RESOURCE META
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+
+body:has(#resourceForm) .admin-badge,
+body:has(#resourceForm) .admin-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 28px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+body:has(#resourceForm) .admin-badge {
+    background: rgba(151, 73, 245, .12);
+    border: 1px solid rgba(151, 73, 245, .25);
+    color: #cda8ff;
+}
+
+
+body:has(#resourceForm) .admin-status.published {
+    background: rgba(42, 190, 120, .1);
+    color: #68d8a3;
+}
+
+
+body:has(#resourceForm) .admin-status.hidden {
+    background: rgba(255, 170, 60, .1);
+    color: #ffb55c;
+}
+
+
+/* =========================================================
+   RESOURCE TITLE
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-item h3 {
+    margin: 0 0 10px;
+
+    color: #f4f4f6;
+
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 750;
+
+    overflow-wrap: anywhere;
+}
+
+
+body:has(#resourceForm) .admin-resource-item p {
+    margin: 0 0 16px;
+
+    color: #989baa;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   RESOURCE LINK
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-link {
+    width: 100%;
+    margin: 12px 0 18px;
+}
+
+
+body:has(#resourceForm) .admin-resource-link a {
+    display: inline-block;
+
+    max-width: 100%;
+
+    color: #b87cff;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   RESOURCE ACTIONS
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+body:has(#resourceForm) .admin-resource-actions button {
+    flex: 0 0 auto;
+
+    padding: 10px 16px;
+
+    border: 1px solid #30333f;
+    border-radius: 10px;
+
+    background: #181922;
+    color: #e9e9ed;
+
+    cursor: pointer;
+}
+
+
+body:has(#resourceForm) .admin-resource-actions .admin-btn-danger {
+    border-color: rgba(255, 80, 100, .3);
+    color: #ff7888;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+   ========================================================= */
+
+body:has(#resourceForm) .admin-resource-thumbnail {
+    flex: 0 0 150px;
+
+    width: 150px;
+    height: 110px;
+
+    margin-right: 22px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+}
+
+
+body:has(#resourceForm) .admin-resource-thumbnail img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   EMPTY / ERROR / LOADING
+   ========================================================= */
+
+body:has(#resourceForm) .admin-empty,
+body:has(#resourceForm) .admin-error,
+body:has(#resourceForm) .admin-loading {
+    width: 100%;
+
+    padding: 55px 25px;
+
+    text-align: center;
+
+    border: 1px dashed #30333f;
+    border-radius: 18px;
+
+    color: #989baa;
+}
+
+
+body:has(#resourceForm) .admin-empty h3,
+body:has(#resourceForm) .admin-error h3 {
+    margin: 15px 0 8px;
+
+    color: #e8e8ec;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+body:has(#resourceForm) .admin-message {
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 14px 18px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+}
+
+
+body:has(#resourceForm) .admin-message-success {
+    background: rgba(45, 190, 120, .1);
+    border: 1px solid rgba(45, 190, 120, .25);
+    color: #6ee0a8;
+}
+
+
+body:has(#resourceForm) .admin-message-error {
+    background: rgba(255, 70, 90, .1);
+    border: 1px solid rgba(255, 70, 90, .25);
+    color: #ff7c8c;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    body:has(#resourceForm) .admin-main {
+        padding: 45px 35px 70px;
+    }
+
+    body:has(#resourceForm) .admin-stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    body:has(#resourceForm) .resource-admin-grid,
+    body:has(#resourceForm) .resources-admin-grid,
+    body:has(#resourceForm) .admin-resource-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    body:has(#resourceForm) .admin-sidebar {
+        position: relative;
+
+        width: 100%;
+        min-width: 0;
+
+        height: auto;
+    }
+
+    body:has(#resourceForm) .admin-main {
+        margin-left: 0;
+        width: 100%;
+
+        padding: 30px 20px 60px;
+    }
+
+    body:has(#resourceForm) .admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    body:has(#resourceForm) .form-row,
+    body:has(#resourceForm) .admin-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body:has(#resourceForm) .admin-main {
+        padding: 25px 15px 50px;
+    }
+
+    body:has(#resourceForm) #resourceForm {
+        padding: 22px;
+    }
+
+    body:has(#resourceForm) .admin-resource-item {
+        padding: 18px;
+    }
+
+    body:has(#resourceForm) .admin-resource-thumbnail {
+        flex-basis: 90px;
+
+        width: 90px;
+        height: 80px;
+
+        margin-right: 14px;
+    }
+}
+

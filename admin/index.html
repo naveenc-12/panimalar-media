@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login - Panimalar Media</title>
+
+    <meta
+        name="description"
+        content="Panimalar Media administration portal."
+    >
+
+
+    <!-- Main website styles -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+
+    <style>
+
+        /* =================================================
+           ADMIN LOGIN PAGE
+        ================================================= */
+
+        body.admin-login-page {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 24px;
+
+        }
+
+
+        .admin-login-wrapper {
+
+            width: 100%;
+
+            max-width: 440px;
+
+        }
+
+
+        /* =================================================
+           BRAND
+        ================================================= */
+
+        .admin-login-brand {
+
+            text-align: center;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .admin-login-brand .brand-icon {
+
+            width: 64px;
+
+            height: 64px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #ec4899
+                );
+
+            color: #ffffff;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 12px 35px
+                rgba(139, 92, 246, 0.25);
+
+        }
+
+
+        .admin-login-brand h1 {
+
+            margin: 0;
+
+            font-size: 28px;
+
+            letter-spacing: -0.5px;
+
+        }
+
+
+        .admin-login-brand p {
+
+            margin-top: 8px;
+
+            color: #8f8f9d;
+
+        }
+
+
+        /* =================================================
+           LOGIN CARD
+        ================================================= */
+
+        .admin-login-card {
+
+            padding: 32px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            border-radius: 20px;
+
+            background:
+                rgba(18, 18, 24, 0.92);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.35);
+
+        }
+
+
+        .admin-login-card h2 {
+
+            margin-top: 0;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .admin-login-description {
+
+            margin-bottom: 26px;
+
+            color: #92929f;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =================================================
+           FORM
+        ================================================= */
+
+        .admin-form-group {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .admin-form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .admin-form-group input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 13px 14px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255, 255, 255, 0.04);
+
+            color: #ffffff;
+
+            outline: none;
+
+            font: inherit;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .admin-form-group input:focus {
+
+            border-color:
+                rgba(168, 85, 247, 0.75);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(168, 85, 247, 0.10);
+
+        }
+
+
+        .admin-form-group input::placeholder {
+
+            color: #686875;
+
+        }
+
+
+        /* =================================================
+           LOGIN BUTTON
+        ================================================= */
+
+        .admin-login-button {
+
+            width: 100%;
+
+            margin-top: 8px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            padding: 14px 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #ec4899
+                );
+
+            color: #ffffff;
+
+            font: inherit;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+
+        }
+
+
+        .admin-login-button:hover {
+
+            transform: translateY(-1px);
+
+        }
+
+
+        .admin-login-button:disabled {
+
+            opacity: 0.55;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+        /* =================================================
+           ERROR
+        ================================================= */
+
+        .admin-error {
+
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 12px 14px;
+
+            border:
+                1px solid
+                rgba(239, 68, 68, 0.30);
+
+            border-radius: 10px;
+
+            background:
+                rgba(239, 68, 68, 0.08);
+
+            color: #fca5a5;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .admin-error.visible {
+
+            display: block;
+
+        }
+
+
+        /* =================================================
+           FOOTER
+        ================================================= */
+
+        .admin-login-footer {
+
+            margin-top: 22px;
+
+            text-align: center;
+
+            color: #777783;
+
+            font-size: 13px;
+
+        }
+
+
+        .admin-login-footer a {
+
+            color: #a78bfa;
+
+            text-decoration: none;
+
+        }
+
+
+        .admin-login-footer a:hover {
+
+            text-decoration: underline;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="admin-login-page">
+
+
+    <main class="admin-login-wrapper">
+
+
+        <!-- =================================================
+             BRAND
+        ================================================= -->
+
+        <div class="admin-login-brand">
+
+            <div
+                class="brand-icon"
+                aria-hidden="true"
+            >
+                PM
+            </div>
+
+
+            <h1>
+                Panimalar Media
+            </h1>
+
+
+            <p>
+                Administration Portal
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             LOGIN CARD
+        ================================================= -->
+
+        <section
+            class="admin-login-card"
+            aria-labelledby="loginTitle"
+        >
+
+            <h2 id="loginTitle">
+                Admin Login
+            </h2>
+
+
+            <p class="admin-login-description">
+                Sign in to manage events, announcements,
+                resources, gallery content and more.
+            </p>
+
+
+            <!-- Error message -->
+
+            <div
+                id="adminLoginError"
+                class="admin-error"
+                role="alert"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Login form -->
+
+            <form
+                id="adminLoginForm"
+                novalidate
+            >
+
+                <div class="admin-form-group">
+
+                    <label for="adminEmail">
+                        Email
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        name="email"
+                        placeholder="admin@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="admin-form-group">
+
+                    <label for="adminPassword">
+                        Password
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="adminLoginButton"
+                    class="admin-login-button"
+                >
+                    Sign in
+                </button>
+
+            </form>
+
+
+            <div class="admin-login-footer">
+
+                <a href="../index.html">
+                    ← Back to Panimalar Media
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         SUPABASE LIBRARY
+
+         IMPORTANT:
+         Load this FIRST.
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =====================================================
+         OUR SUPABASE CONNECTION
+    ====================================================== -->
+
+    <script src="../js/supabase.js"></script>
+
+
+    <!-- =====================================================
+         ADMIN AUTHENTICATION
+    ====================================================== -->
+
+    <script src="../js/admin/auth.js"></script>
+
+
+
+</body>
+
+</html>

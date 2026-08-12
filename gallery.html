@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery - Panimalar Media</title>
+    <meta
+        name="description"
+        content="Explore event photos, campus moments and memories captured by Panimalar Media."
+    >
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* Gallery meta populated by Supabase */
+        #galleryMeta {
+            margin-top: 8px;
+            color: var(--text-muted, #8f93a3);
+            font-size: 13px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="container topbar-inner">
+
+            <!-- Brand -->
+
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Panimalar Media Home"
+            >
+
+                <span class="brand-mark" aria-hidden="true">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+
+                <span class="brand-text">
+                    Panimalar <strong>Media</strong>
+                </span>
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav
+                class="mainnav"
+                aria-label="Main navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="ask-seniors.html">
+                    Ask &amp; Learn
+                </a>
+
+                <a href="resources.html">
+                    Resources
+                </a>
+
+                <a href="bus-routes.html">
+                    Bus Routes
+                </a>
+
+                <a
+                    href="gallery.html"
+                    class="active"
+                >
+                    Gallery
+                </a>
+
+                <a href="announcements.html">
+                    Announcements
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Menu -->
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-btn"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobileNav"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+
+        <nav
+            class="mobilenav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="ask-seniors.html">
+                Ask &amp; Learn
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a href="bus-routes.html">
+                Bus Routes
+            </a>
+
+            <a
+                href="gallery.html"
+                class="active"
+            >
+                Gallery
+            </a>
+
+            <a href="announcements.html">
+                Announcements
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <!-- Page Heading -->
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            Relive it
+                        </span>
+
+                        <h1>
+                            Gallery
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     EVENT SELECTOR
+                ================================================== -->
+
+                <div
+                    class="gallery-event-tabs"
+                    id="galleryEvents"
+                    aria-label="Gallery events"
+                >
+                    <!-- Generated by gallery.js -->
+                </div>
+
+
+
+                <!-- =================================================
+                     GALLERY META
+                ================================================== -->
+
+                <div
+                    class="gallery-meta"
+                    id="galleryMeta"
+                >
+                    <!-- Generated by gallery.js -->
+                </div>
+
+
+
+                <!-- =================================================
+                     CATEGORY SELECTOR
+                ================================================== -->
+
+                <div
+                    class="gallery-category-tabs"
+                    id="galleryCategories"
+                    aria-label="Gallery categories"
+                >
+                    <!-- Generated by gallery.js -->
+                </div>
+
+
+
+                <!-- =================================================
+                     IMAGE GRID
+                ================================================== -->
+
+                <div
+                    class="gallery-grid"
+                    id="galleryGrid"
+                >
+                    <!--
+                        Images are generated from:
+
+                        data/gallery.js
+
+                        by:
+
+                        js/gallery.js
+                    -->
+                </div>
+
+
+
+                <!-- =================================================
+                     EMPTY STATE
+                ================================================== -->
+
+                <div
+                    class="empty"
+                    id="galleryEmpty"
+                    hidden
+                >
+
+                    <div class="big">
+                        —
+                    </div>
+
+                    <h3>
+                        No photos yet
+                    </h3>
+
+                    <p>
+                        Photos from this event will appear here soon.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         IMAGE LIGHTBOX
+    ====================================================== -->
+
+    <div
+        class="lightbox"
+        id="galleryLightbox"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-label="Image preview"
+    >
+
+        <button
+            class="lightbox-close"
+            id="lightboxClose"
+            type="button"
+            aria-label="Close image preview"
+        >
+            &times;
+        </button>
+
+
+        <button
+            class="lightbox-prev"
+            id="lightboxPrev"
+            type="button"
+            aria-label="Previous image"
+        >
+            ←
+        </button>
+
+
+        <div class="lightbox-content">
+
+            <img
+                id="lightboxImage"
+                src=""
+                alt=""
+            >
+
+            <div
+                class="lightbox-caption"
+                id="lightboxCaption"
+            ></div>
+
+        </div>
+
+
+        <button
+            class="lightbox-next"
+            id="lightboxNext"
+            type="button"
+            aria-label="Next image"
+        >
+            →
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="foot-grid">
+
+
+                <!-- Brand -->
+
+                <div class="foot-col">
+
+                    <div
+                        class="brand"
+                        style="margin-bottom: 10px;"
+                    >
+
+                        <span
+                            class="brand-mark"
+                            aria-hidden="true"
+                        >
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+
+                        <span class="brand-text">
+                            Panimalar <strong>Media</strong>
+                        </span>
+
+                    </div>
+
+                    <p
+                        class="muted"
+                        style="font-size: 13px; max-width: 32ch;"
+                    >
+                        The student hub for events, answers,
+                        resources and everything else campus life
+                        needs — built and run by Panimalar Media.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Platform -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Platform
+                    </h5>
+
+                    <a href="events.html">
+                        Events
+                    </a>
+
+                    <a href="ask-seniors.html">
+                        Ask &amp; Learn
+                    </a>
+
+                    <a href="resources.html">
+                        Resources
+                    </a>
+
+                    <a href="bus-routes.html">
+                        Bus Routes
+                    </a>
+
+                </div>
+
+
+
+                <!-- More -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        More
+                    </h5>
+
+                    <a href="gallery.html">
+                        Gallery
+                    </a>
+
+                    <a href="announcements.html">
+                        Announcements
+                    </a>
+
+                    <a href="about.html">
+                        About Panimalar Media
+                    </a>
+
+                </div>
+
+
+
+                <!-- Follow -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Follow
+                    </h5>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn
+                    </a>
+
+                    <a href="mailto:panimalarmedia@college.edu">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Footer Bottom -->
+
+            <div class="foot-bottom">
+
+                <span>
+                    © 2026 PANIMALAR MEDIA
+                </span>
+
+                <span>
+                    BUILT FOR STUDENTS OF PEC
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
+    <!-- =====================================================
+         PAGE SCRIPTS
+    ====================================================== -->
+
+    <script src="js/utils.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Questions - Panimalar Media Admin</title>
+
+    <!-- Existing project CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- =====================================================
+         QUESTIONS ADMIN PAGE CSS
+         Self-contained - NO admin.css required
+    ====================================================== -->
+    <style>
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            background: #08090d;
+            color: #f5f5f7;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           ADMIN LAYOUT
+        ====================================================== */
+
+        .admin-layout {
+            min-height: 100vh;
+            display: flex;
+            background:
+                radial-gradient(
+                    circle at 75% 10%,
+                    rgba(125, 66, 255, 0.07),
+                    transparent 30%
+                ),
+                #08090d;
+        }
+
+        /* =====================================================
+           SIDEBAR
+        ====================================================== */
+
+        .admin-sidebar {
+            width: 280px;
+            min-width: 280px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 28px 20px 20px;
+
+            background: #0b0c11;
+            border-right: 1px solid #20212a;
+
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 8px 12px 30px;
+        }
+
+        .admin-logo {
+            width: 54px;
+            height: 54px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background: linear-gradient(
+                135deg,
+                #8b5cf6,
+                #ec4899
+            );
+
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+
+            box-shadow:
+                0 10px 30px rgba(139, 92, 246, 0.25);
+        }
+
+        .admin-brand strong {
+            display: block;
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.2;
+        }
+
+        .admin-brand span {
+            display: block;
+            margin-top: 5px;
+
+            color: #777987;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        .admin-nav {
+            flex: 1;
+        }
+
+        .nav-section-title {
+            margin: 24px 12px 10px;
+
+            color: #666875;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+        }
+
+        .admin-nav-item {
+            min-height: 48px;
+
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            padding: 0 14px;
+            margin: 5px 0;
+
+            border-radius: 12px;
+
+            color: #9294a2;
+
+            font-size: 15px;
+            font-weight: 500;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .admin-nav-item:hover {
+            background: #15151e;
+            color: #fff;
+        }
+
+        .admin-nav-item.active {
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(139, 92, 246, 0.20),
+                    rgba(139, 92, 246, 0.10)
+                );
+
+            box-shadow:
+                inset 0 0 0 1px rgba(139, 92, 246, 0.08);
+        }
+
+        .nav-icon {
+            width: 22px;
+            min-width: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #a78bfa;
+            font-size: 17px;
+        }
+
+        /* =====================================================
+           USER AREA
+        ====================================================== */
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 20px;
+            padding: 16px 12px;
+
+            border-top: 1px solid #20212a;
+        }
+
+        .admin-user-avatar {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #261b46;
+            color: #c4a8ff;
+
+            font-weight: 700;
+        }
+
+        .admin-user-info {
+            min-width: 0;
+        }
+
+        .admin-user-info strong {
+            display: block;
+
+            color: #f1f1f3;
+            font-size: 13px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .admin-user-info span {
+            display: block;
+            margin-top: 4px;
+
+            color: #737583;
+            font-size: 12px;
+        }
+
+        .signout-btn {
+            width: 100%;
+            height: 46px;
+
+            border: 1px solid rgba(239, 68, 68, 0.12);
+            border-radius: 11px;
+
+            background: rgba(127, 29, 29, 0.16);
+            color: #ff9b9b;
+
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .signout-btn:hover {
+            background: rgba(127, 29, 29, 0.28);
+            border-color: rgba(239, 68, 68, 0.25);
+        }
+
+        /* =====================================================
+           MAIN
+        ====================================================== */
+
+        .admin-main {
+            width: calc(100% - 280px);
+            min-height: 100vh;
+
+            margin-left: 280px;
+
+            padding: 52px 56px 70px;
+        }
+
+        .admin-page-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 30px;
+
+            margin-bottom: 35px;
+        }
+
+        .admin-page-header h1 {
+            margin: 0;
+
+            color: #fff;
+
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+        }
+
+        .admin-page-header p {
+            margin: 12px 0 0;
+
+            color: #858794;
+            font-size: 15px;
+        }
+
+        .admin-outline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 44px;
+            padding: 0 18px;
+
+            border: 1px solid #292a35;
+            border-radius: 11px;
+
+            background: #111219;
+            color: #e7e7eb;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            transition: 0.2s ease;
+        }
+
+        .admin-outline-btn:hover {
+            border-color: #6941c6;
+            background: #171321;
+        }
+
+        /* =====================================================
+           STATISTICS
+        ====================================================== */
+
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+
+            margin-bottom: 26px;
+        }
+
+        .admin-stat-card {
+            min-height: 145px;
+
+            padding: 22px;
+
+            border: 1px solid #24252e;
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20, 21, 29, 0.98),
+                    rgba(13, 14, 20, 0.98)
+                );
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .admin-stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 22px;
+
+            color: #858794;
+            font-size: 14px;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #20163b;
+            color: #b58cff;
+
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .admin-stat-card > strong {
+            display: block;
+
+            color: #fff;
+            font-size: 34px;
+            line-height: 1;
+        }
+
+        /* =====================================================
+           CONTENT CARD
+        ====================================================== */
+
+        .admin-content-card {
+            border: 1px solid #24252e;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(17, 18, 25, 0.98),
+                    rgba(12, 13, 18, 0.98)
+                );
+
+            overflow: hidden;
+        }
+
+        .content-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 20px;
+
+            border-bottom: 1px solid #22232c;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 430px;
+
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 0 14px;
+
+            border: 1px solid #292a35;
+            border-radius: 11px;
+
+            background: #0d0e14;
+        }
+
+        .search-box span {
+            opacity: 0.65;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            border: 0;
+            outline: 0;
+
+            background: transparent;
+            color: #fff;
+
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: #686a77;
+        }
+
+        .status-filters {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            flex-wrap: wrap;
+        }
+
+        .status-filter {
+            height: 38px;
+
+            padding: 0 13px;
+
+            border: 1px solid #292a35;
+            border-radius: 9px;
+
+            background: transparent;
+            color: #858794;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .status-filter:hover {
+            color: #fff;
+            background: #15161d;
+        }
+
+        .status-filter.active {
+            color: #fff;
+
+            border-color: #7044ce;
+
+            background:
+                rgba(112, 68, 206, 0.20);
+        }
+
+        /* =====================================================
+           QUESTION LIST
+        ====================================================== */
+
+        #questionsList {
+            min-height: 250px;
+        }
+
+        .admin-loading {
+            min-height: 250px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 15px;
+
+            color: #777987;
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+
+            border: 3px solid #272833;
+            border-top-color: #9b6cff;
+
+            border-radius: 50%;
+
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .question-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+
+            padding: 22px 24px;
+
+            border-bottom: 1px solid #20212a;
+
+            transition: background 0.2s ease;
+        }
+
+        .question-row:last-child {
+            border-bottom: 0;
+        }
+
+        .question-row:hover {
+            background: rgba(255, 255, 255, 0.018);
+        }
+
+        .question-row-main {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .question-row-meta {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 9px;
+
+            color: #757784;
+            font-size: 12px;
+        }
+
+        .question-row-title {
+            margin: 0;
+
+            color: #f5f5f7;
+
+            font-size: 17px;
+            font-weight: 650;
+            line-height: 1.45;
+
+            word-break: break-word;
+        }
+
+        .question-row-preview {
+            margin-top: 7px;
+
+            color: #777987;
+
+            font-size: 13px;
+            line-height: 1.5;
+
+            max-width: 850px;
+        }
+
+        .question-row-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            flex-shrink: 0;
+        }
+
+        .question-action-btn {
+            min-height: 38px;
+
+            padding: 0 13px;
+
+            border: 1px solid #2a2b35;
+            border-radius: 9px;
+
+            background: #12131a;
+            color: #dddde3;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .question-action-btn:hover {
+            border-color: #7250c9;
+            background: #191521;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+
+            min-height: 25px;
+
+            padding: 0 9px;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-violet {
+            color: #c5aaff;
+            background: rgba(139, 92, 246, 0.14);
+            border: 1px solid rgba(139, 92, 246, 0.24);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+
+            min-height: 25px;
+
+            padding: 0 9px;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-transform: capitalize;
+        }
+
+        .status-pending {
+            color: #f8cf72;
+            background: rgba(234, 179, 8, 0.12);
+        }
+
+        .status-published {
+            color: #79e2a6;
+            background: rgba(34, 197, 94, 0.12);
+        }
+
+        .status-hidden {
+            color: #a8abb8;
+            background: rgba(148, 163, 184, 0.10);
+        }
+
+        .status-closed {
+            color: #ff9292;
+            background: rgba(239, 68, 68, 0.10);
+        }
+
+        .admin-empty {
+            min-height: 280px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #737582;
+            text-align: center;
+        }
+
+        /* =====================================================
+           MODAL
+        ====================================================== */
+
+        .admin-modal[hidden] {
+            display: none !important;
+        }
+
+        .admin-modal {
+            position: fixed;
+            inset: 0;
+
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .admin-modal-overlay {
+            position: absolute;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(6px);
+        }
+
+        .admin-modal-box {
+            position: relative;
+            z-index: 2;
+
+            width: min(760px, 100%);
+            max-height: 88vh;
+
+            overflow-y: auto;
+
+            padding: 28px;
+
+            border: 1px solid #30313b;
+            border-radius: 20px;
+
+            background: #111219;
+
+            box-shadow:
+                0 30px 100px rgba(0, 0, 0, 0.55);
+        }
+
+        .admin-modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .admin-modal-header h2 {
+            margin: 13px 0 0;
+
+            color: #fff;
+
+            font-size: 25px;
+            line-height: 1.35;
+        }
+
+        .modal-close {
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            border: 1px solid #2d2e38;
+            border-radius: 10px;
+
+            background: #171820;
+            color: #aaaeba;
+
+            font-size: 22px;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+            background: #20212b;
+        }
+
+        .modal-question-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            margin-top: 20px;
+
+            color: #777987;
+            font-size: 13px;
+        }
+
+        .modal-status-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 22px;
+            padding: 16px;
+
+            border: 1px solid #24252f;
+            border-radius: 12px;
+
+            background: #0d0e14;
+        }
+
+        .modal-status-row strong {
+            color: #cfd0d7;
+            font-size: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+
+            margin-top: 18px;
+        }
+
+        .btn {
+            min-height: 40px;
+
+            padding: 0 15px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .btn-grad {
+            border: 0;
+
+            background: linear-gradient(
+                135deg,
+                #8b5cf6,
+                #d946ef
+            );
+
+            color: #fff;
+        }
+
+        .btn-ghost {
+            border: 1px solid #2d2e38;
+
+            background: #15161d;
+            color: #dddde3;
+        }
+
+        .btn-danger {
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
+            background: rgba(127, 29, 29, 0.18);
+            color: #ff9c9c;
+        }
+
+        .modal-section {
+            margin-top: 30px;
+            padding-top: 24px;
+
+            border-top: 1px solid #24252e;
+        }
+
+        .modal-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+        .modal-section-header h3 {
+            margin: 0;
+
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .modal-section-header span {
+            color: #727481;
+            font-size: 12px;
+        }
+
+        .modal-empty {
+            padding: 30px;
+
+            border: 1px dashed #2a2b34;
+            border-radius: 12px;
+
+            color: #727481;
+
+            text-align: center;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+            .admin-sidebar {
+                width: 230px;
+                min-width: 230px;
+            }
+
+            .admin-main {
+                width: calc(100% - 230px);
+                margin-left: 230px;
+                padding: 40px 30px 60px;
+            }
+
+            .admin-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .admin-sidebar {
+                position: relative;
+
+                width: 100%;
+                min-width: 0;
+                height: auto;
+
+                border-right: 0;
+                border-bottom: 1px solid #20212a;
+            }
+
+            .admin-layout {
+                display: block;
+            }
+
+            .admin-main {
+                width: 100%;
+                margin-left: 0;
+
+                padding: 30px 18px 50px;
+            }
+
+            .admin-page-header {
+                flex-direction: column;
+            }
+
+            .admin-stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .question-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .question-row-actions {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .admin-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-filters {
+                width: 100%;
+            }
+
+            .status-filter {
+                flex: 1;
+            }
+
+            .admin-modal {
+                padding: 12px;
+            }
+
+            .admin-modal-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-logo">
+                PM
+            </div>
+
+            <div>
+                <strong>Panimalar Media</strong>
+                <span>Admin Panel</span>
+            </div>
+
+        </div>
+
+
+        <nav class="admin-nav">
+
+            <div class="nav-section-title">
+                OVERVIEW
+            </div>
+
+            <a href="dashboard.html" class="admin-nav-item">
+                <span class="nav-icon">▦</span>
+                Dashboard
+            </a>
+
+
+            <div class="nav-section-title">
+                CONTENT
+            </div>
+
+            <a href="events.html" class="admin-nav-item">
+                <span class="nav-icon">◷</span>
+                Events
+            </a>
+
+            <a href="announcements.html" class="admin-nav-item">
+                <span class="nav-icon">!</span>
+                Announcements
+            </a>
+
+            <a href="resources.html" class="admin-nav-item">
+                <span class="nav-icon">▤</span>
+                Resources
+            </a>
+
+            <a href="gallery.html" class="admin-nav-item">
+                <span class="nav-icon">▧</span>
+                Gallery
+            </a>
+
+            <a href="bus-routes.html" class="admin-nav-item">
+                <span class="nav-icon">▱</span>
+                Bus Routes
+            </a>
+
+            <a href="questions.html" class="admin-nav-item active">
+                <span class="nav-icon">?</span>
+                Questions
+            </a>
+
+        </nav>
+
+
+        <div class="admin-user">
+
+            <div class="admin-user-avatar">
+                P
+            </div>
+
+            <div class="admin-user-info">
+                <strong>Panimalar Media Admin</strong>
+                <span>Administrator</span>
+            </div>
+
+        </div>
+
+
+        <button
+            id="signOutBtn"
+            class="signout-btn"
+            type="button"
+        >
+            Sign out
+        </button>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+        <div class="admin-page-header">
+
+            <div>
+                <h1>Questions</h1>
+
+                <p>
+                    Manage questions and replies submitted by students.
+                </p>
+            </div>
+
+            <a
+                href="../ask-seniors.html"
+                target="_blank"
+                class="admin-outline-btn"
+            >
+                ↗ View Public Page
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <div class="admin-stats-grid">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-top">
+                    <span>Total Questions</span>
+
+                    <div class="stat-icon">
+                        ?
+                    </div>
+                </div>
+
+                <strong id="totalQuestions">0</strong>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-top">
+                    <span>Pending</span>
+
+                    <div class="stat-icon">
+                        !
+                    </div>
+                </div>
+
+                <strong id="pendingQuestions">0</strong>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-top">
+                    <span>Published</span>
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+                </div>
+
+                <strong id="publishedQuestions">0</strong>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-top">
+                    <span>Replies</span>
+
+                    <div class="stat-icon">
+                        ↳
+                    </div>
+                </div>
+
+                <strong id="totalReplies">0</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             QUESTIONS
+        ================================================== -->
+
+        <section class="admin-content-card">
+
+            <div class="content-toolbar">
+
+                <div class="search-box">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="questionSearch"
+                        placeholder="Search questions..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="status-filters">
+
+                    <button
+                        type="button"
+                        class="status-filter active"
+                        data-status="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        type="button"
+                        class="status-filter"
+                        data-status="pending"
+                    >
+                        Pending
+                    </button>
+
+                    <button
+                        type="button"
+                        class="status-filter"
+                        data-status="published"
+                    >
+                        Published
+                    </button>
+
+                    <button
+                        type="button"
+                        class="status-filter"
+                        data-status="hidden"
+                    >
+                        Hidden
+                    </button>
+
+                    <button
+                        type="button"
+                        class="status-filter"
+                        data-status="closed"
+                    >
+                        Closed
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div id="questionsList">
+
+                <div class="admin-loading">
+
+                    <div class="loading-spinner"></div>
+
+                    <p>Loading questions...</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     QUESTION MODAL
+========================================================== -->
+
+<div
+    id="questionModal"
+    class="admin-modal"
+    hidden
+>
+
+    <div class="admin-modal-overlay"></div>
+
+
+    <div class="admin-modal-box">
+
+        <div class="admin-modal-header">
+
+            <div>
+
+                <span
+                    id="modalCategory"
+                    class="badge badge-violet"
+                >
+                    Academics
+                </span>
+
+                <h2 id="modalQuestion">
+                    Question
+                </h2>
+
+            </div>
+
+
+            <button
+                id="closeModal"
+                class="modal-close"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-question-info">
+
+            <span>
+                🕶️ Anonymous
+            </span>
+
+            <span id="modalDate">
+                11 Aug 2026
+            </span>
+
+        </div>
+
+
+        <div class="modal-status-row">
+
+            <strong>
+                Status
+            </strong>
+
+            <span
+                id="modalStatus"
+                class="status-badge status-published"
+            >
+                Published
+            </span>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="publishQuestionBtn"
+                class="btn btn-grad"
+                type="button"
+            >
+                ✓ Publish
+            </button>
+
+            <button
+                id="hideQuestionBtn"
+                class="btn btn-ghost"
+                type="button"
+            >
+                Hide
+            </button>
+
+            <button
+                id="closeQuestionBtn"
+                class="btn btn-ghost"
+                type="button"
+            >
+                Close
+            </button>
+
+            <button
+                id="deleteQuestionBtn"
+                class="btn btn-danger"
+                type="button"
+            >
+                Delete
+            </button>
+
+        </div>
+
+
+        <!-- REPLIES -->
+
+        <div class="modal-section">
+
+            <div class="modal-section-header">
+
+                <h3>
+                    Replies
+                </h3>
+
+                <span id="modalReplyCount">
+                    0 replies
+                </span>
+
+            </div>
+
+
+            <div id="modalReplies">
+
+                <div class="modal-empty">
+                    No replies yet.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/supabase.js"></script>
+
+
+<!-- =========================================================
+     ADMIN AUTH
+========================================================== -->
+<script src="../js/admin/auth.js"></script>
+
+
+<!-- =========================================================
+     QUESTIONS JS
+========================================================== -->
+<script src="../js/admin/questions.js"></script>
+
+</body>
+</html>
+

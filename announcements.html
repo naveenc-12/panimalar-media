@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Announcements - Panimalar Media</title>
+    <meta
+        name="description"
+        content="Stay updated with the latest Panimalar campus announcements, deadlines, events, workshops and notices."
+    >
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="container topbar-inner">
+
+            <!-- Brand -->
+
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Panimalar Media Home"
+            >
+
+                <span class="brand-mark" aria-hidden="true">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+
+                <span class="brand-text">
+                    Panimalar <strong>Media</strong>
+                </span>
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav
+                class="mainnav"
+                aria-label="Main navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="ask-seniors.html">
+                    Ask &amp; Learn
+                </a>
+
+                <a href="resources.html">
+                    Resources
+                </a>
+
+                <a href="bus-routes.html">
+                    Bus Routes
+                </a>
+
+                <a href="gallery.html">
+                    Gallery
+                </a>
+
+                <a
+                    href="announcements.html"
+                    class="active"
+                >
+                    Announcements
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Menu Button -->
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-btn"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobileNav"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+
+        <nav
+            class="mobilenav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="ask-seniors.html">
+                Ask &amp; Learn
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a href="bus-routes.html">
+                Bus Routes
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a
+                href="announcements.html"
+                class="active"
+            >
+                Announcements
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <!-- =================================================
+                     PAGE HEADING
+                ================================================== -->
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            Stay in the loop
+                        </span>
+
+                        <h1>
+                            Announcements
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FILTERS
+                ================================================== -->
+
+                <div
+                    class="chiprow announcement-filters"
+                    id="announcementFilters"
+                    aria-label="Announcement categories"
+                >
+
+                    <button
+                        type="button"
+                        class="chip active"
+                        data-announcement-filter="All"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-announcement-filter="Deadline"
+                    >
+                        Deadline
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-announcement-filter="New Event"
+                    >
+                        New Event
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-announcement-filter="Bus Update"
+                    >
+                        Bus Update
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-announcement-filter="Recruitment"
+                    >
+                        Recruitment
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-announcement-filter="Workshop"
+                    >
+                        Workshop
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-announcement-filter="Notice"
+                    >
+                        Notice
+                    </button>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ANNOUNCEMENTS LIST
+                ================================================== -->
+
+                <div
+                    class="card announcements-list"
+                    id="announcementsContainer"
+                >
+                    <!--
+                        Announcements are generated from:
+
+                        data/announcements.js
+
+                        by:
+
+                        js/announcements.js
+                    -->
+                </div>
+
+
+
+                <!-- =================================================
+                     EMPTY STATE
+                ================================================== -->
+
+                <div
+                    class="empty"
+                    id="announcementsEmpty"
+                    hidden
+                >
+
+                    <div class="big">
+                        —
+                    </div>
+
+                    <h3>
+                        Nothing here yet
+                    </h3>
+
+                    <p>
+                        Check back soon for new announcements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="foot-grid">
+
+
+                <!-- Brand -->
+
+                <div class="foot-col">
+
+                    <div
+                        class="brand"
+                        style="margin-bottom: 10px;"
+                    >
+
+                        <span
+                            class="brand-mark"
+                            aria-hidden="true"
+                        >
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+
+                        <span class="brand-text">
+                            Panimalar <strong>Media</strong>
+                        </span>
+
+                    </div>
+
+                    <p
+                        class="muted"
+                        style="font-size: 13px; max-width: 32ch;"
+                    >
+                        The student hub for events, answers,
+                        resources and everything else campus life
+                        needs — built and run by Panimalar Media.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Platform -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Platform
+                    </h5>
+
+                    <a href="events.html">
+                        Events
+                    </a>
+
+                    <a href="ask-seniors.html">
+                        Ask &amp; Learn
+                    </a>
+
+                    <a href="resources.html">
+                        Resources
+                    </a>
+
+                    <a href="bus-routes.html">
+                        Bus Routes
+                    </a>
+
+                </div>
+
+
+
+                <!-- More -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        More
+                    </h5>
+
+                    <a href="gallery.html">
+                        Gallery
+                    </a>
+
+                    <a href="announcements.html">
+                        Announcements
+                    </a>
+
+                    <a href="about.html">
+                        About Panimalar Media
+                    </a>
+
+                </div>
+
+
+
+                <!-- Follow -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Follow
+                    </h5>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn
+                    </a>
+
+                    <a href="mailto:panimalarmedia@college.edu">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Footer Bottom -->
+
+            <div class="foot-bottom">
+
+                <span>
+                    © 2026 PANIMALAR MEDIA
+                </span>
+
+                <span>
+                    BUILT FOR STUDENTS OF PEC
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Your Supabase connection -->
+<script src="js/supabase.js"></script>
+
+<!-- Public announcements -->
+<script src="js/announcements.js"></script>
+
+
+</body>
+</html>

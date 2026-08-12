@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ask &amp; Learn - Panimalar Media</title>
+    <meta
+        name="description"
+        content="Ask questions, learn from seniors and find useful answers about academics, careers, clubs and campus life."
+    >
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="container topbar-inner">
+
+            <!-- Brand -->
+
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Panimalar Media Home"
+            >
+
+                <span class="brand-mark" aria-hidden="true">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+
+                <span class="brand-text">
+                    Panimalar <strong>Media</strong>
+                </span>
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav
+                class="mainnav"
+                aria-label="Main navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a
+                    href="ask-seniors.html"
+                    class="active"
+                >
+                    Ask &amp; Learn
+                </a>
+
+                <a href="resources.html">
+                    Resources
+                </a>
+
+                <a href="bus-routes.html">
+                    Bus Routes
+                </a>
+
+                <a href="gallery.html">
+                    Gallery
+                </a>
+
+                <a href="announcements.html">
+                    Announcements
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Menu -->
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-btn"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobileNav"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+
+        <nav
+            class="mobilenav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a
+                href="ask-seniors.html"
+                class="active"
+            >
+                Ask &amp; Learn
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a href="bus-routes.html">
+                Bus Routes
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a href="announcements.html">
+                Announcements
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="container ask-page">
+
+
+                <!-- =================================================
+                     PAGE INTRO
+                ================================================== -->
+
+                <div class="ask-intro">
+
+                    <span class="eyebrow">
+                        Learn from people who've been there
+                    </span>
+
+                    <h1>
+                        Ask &amp; Learn
+                    </h1>
+
+                    <p class="lead">
+                        Got a question about college life, academics,
+                        careers, clubs or anything in between?
+                        Ask anonymously and learn from students
+                        who've already been through it.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ASK QUESTION CARD
+                ================================================== -->
+
+                <div class="card ask-form-card">
+
+                    <div class="ask-form-head">
+
+                        <div>
+
+                            <span class="badge badge-violet">
+                                Anonymous
+                            </span>
+
+                            <h2>
+                                Ask a question
+                            </h2>
+
+                            <p class="muted">
+                                Keep it specific so seniors can give
+                                you a useful answer.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        id="questionForm"
+                        class="ask-form"
+                    >
+
+                        <div class="field">
+
+                            <label for="questionText">
+                                Your question
+                            </label>
+
+                            <textarea
+                                id="questionText"
+                                name="question"
+                                maxlength="400"
+                                rows="5"
+                                placeholder="e.g. Which electives are easiest to manage with core subjects?"
+                                required
+                            ></textarea>
+
+                            <div class="field-bottom">
+
+                                <span
+                                    class="field-hint"
+                                    id="questionCharCount"
+                                >
+                                    0 / 400
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ask-form-row">
+
+                            <div class="field">
+
+                                <label for="questionCategory">
+                                    Category
+                                </label>
+
+                                <select
+                                    id="questionCategory"
+                                    name="category"
+                                >
+
+                                    <option value="Academics">
+                                        Academics
+                                    </option>
+
+                                    <option value="Career">
+                                        Career
+                                    </option>
+
+                                    <option value="Club">
+                                        Club
+                                    </option>
+
+                                    <option value="Campus Life">
+                                        Campus Life
+                                    </option>
+
+                                    <option value="Forms">
+                                        Forms
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="ask-submit-wrap">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-grad"
+                                    id="questionSubmit"
+                                    disabled
+                                >
+                                    Post anonymously
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+
+                    <div class="ask-notice">
+
+    <span>🕶️</span>
+
+    <p>
+        Questions are displayed anonymously.
+        Your question is stored securely and shown to other students.
+    </p>
+
+</div>
+                </div>
+
+
+
+                <!-- =================================================
+                     SEARCH + FILTERS
+                ================================================== -->
+
+                <div class="ask-controls">
+
+                    <div class="field-search">
+
+                        <span aria-hidden="true">
+                            🔎
+                        </span>
+
+                        <input
+                            type="search"
+                            id="questionSearch"
+                            placeholder="Search questions..."
+                            autocomplete="off"
+                            aria-label="Search questions"
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="chiprow"
+                        id="questionFilters"
+                        aria-label="Question categories"
+                    >
+                        <!-- Generated by ask-seniors.js -->
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     QUESTION FEED
+                ================================================== -->
+
+                <div
+                    class="ask-feed"
+                    id="questionFeed"
+                >
+                    <!-- Generated by ask-seniors.js -->
+                </div>
+
+
+
+                <!-- =================================================
+                     EMPTY STATE
+                ================================================== -->
+
+                <div
+                    class="empty"
+                    id="questionEmpty"
+                    hidden
+                >
+
+                    <div class="big">
+                        —
+                    </div>
+
+                    <h3>
+                        No questions found
+                    </h3>
+
+                    <p>
+                        Try another category or search term.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="foot-grid">
+
+
+                <!-- Brand -->
+
+                <div class="foot-col">
+
+                    <div
+                        class="brand"
+                        style="margin-bottom: 10px;"
+                    >
+
+                        <span
+                            class="brand-mark"
+                            aria-hidden="true"
+                        >
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+
+                        <span class="brand-text">
+                            Panimalar <strong>Media</strong>
+                        </span>
+
+                    </div>
+
+                    <p
+                        class="muted"
+                        style="font-size: 13px; max-width: 32ch;"
+                    >
+                        The student hub for events, answers,
+                        resources and everything else campus life
+                        needs — built and run by Panimalar Media.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Platform -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Platform
+                    </h5>
+
+                    <a href="events.html">
+                        Events
+                    </a>
+
+                    <a href="ask-seniors.html">
+                        Ask &amp; Learn
+                    </a>
+
+                    <a href="resources.html">
+                        Resources
+                    </a>
+
+                    <a href="bus-routes.html">
+                        Bus Routes
+                    </a>
+
+                </div>
+
+
+
+                <!-- More -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        More
+                    </h5>
+
+                    <a href="gallery.html">
+                        Gallery
+                    </a>
+
+                    <a href="announcements.html">
+                        Announcements
+                    </a>
+
+                    <a href="about.html">
+                        About Panimalar Media
+                    </a>
+
+                </div>
+
+
+
+                <!-- Follow -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Follow
+                    </h5>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn
+                    </a>
+
+                    <a href="mailto:panimalarmedia@college.edu">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Footer Bottom -->
+
+            <div class="foot-bottom">
+
+                <span>
+                    © 2026 PANIMALAR MEDIA
+                </span>
+
+                <span>
+                    BUILT FOR STUDENTS OF PEC
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/utils.js"></script>
+<script src="js/ask-seniors.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

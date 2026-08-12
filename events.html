@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Events - Panimalar Media</title>
+
+    <meta
+        name="description"
+        content="Discover upcoming and past events, competitions, workshops and cultural activities at Panimalar Engineering College."
+    >
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="container topbar-inner">
+
+            <!-- BRAND -->
+
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Panimalar Media Home"
+            >
+
+                <span
+                    class="brand-mark"
+                    aria-hidden="true"
+                >
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+
+                <span class="brand-text">
+                    Panimalar <strong>Media</strong>
+                </span>
+
+            </a>
+
+
+            <!-- DESKTOP NAVIGATION -->
+
+            <nav
+                class="mainnav"
+                aria-label="Main navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a
+                    href="events.html"
+                    class="active"
+                >
+                    Events
+                </a>
+
+                <a href="ask-seniors.html">
+                    Ask &amp; Learn
+                </a>
+
+                <a href="resources.html">
+                    Resources
+                </a>
+
+                <a href="bus-routes.html">
+                    Bus Routes
+                </a>
+
+                <a href="gallery.html">
+                    Gallery
+                </a>
+
+                <a href="announcements.html">
+                    Announcements
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-btn"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobileNav"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <nav
+            class="mobilenav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a
+                href="events.html"
+                class="active"
+            >
+                Events
+            </a>
+
+            <a href="ask-seniors.html">
+                Ask &amp; Learn
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a href="bus-routes.html">
+                Bus Routes
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a href="announcements.html">
+                Announcements
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="container">
+
+                <!-- =================================================
+                     PAGE HEADING
+                ================================================== -->
+
+                <div class="section-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            What's happening
+                        </span>
+
+                        <h1>
+                            Events
+                        </h1>
+
+                    </div>
+
+
+                    <!-- UPCOMING / PAST -->
+
+                    <div
+                        class="chiprow"
+                        id="eventTabs"
+                        aria-label="Event status"
+                    >
+
+                        <button
+                            type="button"
+                            class="chip active"
+                            data-event-tab="upcoming"
+                        >
+                            Upcoming
+                        </button>
+
+                        <button
+                            type="button"
+                            class="chip"
+                            data-event-tab="past"
+                        >
+                            Past
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CATEGORY FILTERS
+                ================================================== -->
+
+                <div
+                    class="chiprow event-filters"
+                    id="eventFilters"
+                    aria-label="Event categories"
+                >
+
+                    <button
+                        type="button"
+                        class="chip active"
+                        data-event-filter="All"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-event-filter="Tech"
+                    >
+                        Tech
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-event-filter="Workshop"
+                    >
+                        Workshop
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-event-filter="Cultural"
+                    >
+                        Cultural
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip"
+                        data-event-filter="Competition"
+                    >
+                        Competition
+                    </button>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     EVENTS GRID
+                ================================================== -->
+
+                <div
+                    class="grid g3 events-grid"
+                    id="eventsContainer"
+                    aria-live="polite"
+                >
+
+                    <div
+                        id="eventsLoading"
+                        style="
+                            grid-column: 1 / -1;
+                            padding: 50px;
+                            text-align: center;
+                            color: var(--text-dim);
+                        "
+                    >
+                        Loading events...
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     EMPTY STATE
+                ================================================== -->
+
+                <div
+                    class="empty"
+                    id="eventsEmpty"
+                    hidden
+                >
+
+                    <div class="big">
+                        —
+                    </div>
+
+                    <h3>
+                        No events found
+                    </h3>
+
+                    <p>
+                        Try another category or check back soon
+                        for new events.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="foot-grid">
+
+                <!-- BRAND -->
+
+                <div class="foot-col">
+
+                    <div
+                        class="brand"
+                        style="margin-bottom: 10px;"
+                    >
+
+                        <span
+                            class="brand-mark"
+                            aria-hidden="true"
+                        >
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+
+                        <span class="brand-text">
+                            Panimalar <strong>Media</strong>
+                        </span>
+
+                    </div>
+
+                    <p
+                        class="muted"
+                        style="
+                            font-size: 13px;
+                            max-width: 32ch;
+                        "
+                    >
+                        The student hub for events, answers,
+                        resources and everything else campus life
+                        needs — built and run by Panimalar Media.
+                    </p>
+
+                </div>
+
+
+
+                <!-- PLATFORM -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Platform
+                    </h5>
+
+                    <a href="events.html">
+                        Events
+                    </a>
+
+                    <a href="ask-seniors.html">
+                        Ask &amp; Learn
+                    </a>
+
+                    <a href="resources.html">
+                        Resources
+                    </a>
+
+                    <a href="bus-routes.html">
+                        Bus Routes
+                    </a>
+
+                </div>
+
+
+
+                <!-- MORE -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        More
+                    </h5>
+
+                    <a href="gallery.html">
+                        Gallery
+                    </a>
+
+                    <a href="announcements.html">
+                        Announcements
+                    </a>
+
+                    <a href="about.html">
+                        About Panimalar Media
+                    </a>
+
+                </div>
+
+
+
+                <!-- FOLLOW -->
+
+                <div class="foot-col">
+
+                    <h5>
+                        Follow
+                    </h5>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn
+                    </a>
+
+                    <a href="mailto:panimalarmedia@college.edu">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="foot-bottom">
+
+                <span>
+                    © 2026 PANIMALAR MEDIA
+                </span>
+
+                <span>
+                    BUILT FOR STUDENTS OF PEC
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script src="js/supabase.js"></script>
+
+
+    <!-- =====================================================
+         COMMON UTILITIES
+    ====================================================== -->
+
+    <script src="js/utils.js"></script>
+
+
+    <!-- =====================================================
+         PUBLIC EVENTS SCRIPT
+    ====================================================== -->
+
+    <script src="js/events.js?v=2"></script>
+
+
+    <!-- =====================================================
+         MAIN WEBSITE SCRIPT
+    ====================================================== -->
+
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

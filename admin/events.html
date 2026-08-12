@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Events - Admin | Panimalar Media</title>
+
+    <!-- Common Admin CSS -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+
+    <div class="admin-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="admin-sidebar">
+
+            <!-- BRAND -->
+            <div class="admin-sidebar-brand">
+
+                <div class="admin-sidebar-logo">
+                    PM
+                </div>
+
+                <div class="admin-sidebar-brand-text">
+                    <strong>Panimalar Media</strong>
+                    <span>Admin Panel</span>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="admin-nav">
+
+                <!-- OVERVIEW -->
+
+                <div class="admin-nav-section">
+                    Overview
+                </div>
+
+                <a
+                    href="dashboard.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <!-- CONTENT -->
+
+                <div class="admin-nav-section">
+                    Content
+                </div>
+
+                <a
+                    href="events.html"
+                    class="admin-nav-item active"
+                >
+                    <span class="admin-nav-icon">◷</span>
+                    <span>Events</span>
+                </a>
+
+                <a
+                    href="announcements.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">!</span>
+                    <span>Announcements</span>
+                </a>
+
+                <a
+                    href="resources.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▤</span>
+                    <span>Resources</span>
+                </a>
+
+                <a
+                    href="gallery.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▧</span>
+                    <span>Gallery</span>
+                </a>
+
+                <a
+                    href="bus-routes.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">▱</span>
+                    <span>Bus Routes</span>
+                </a>
+
+
+                <!-- COMMUNITY -->
+
+                <div class="admin-nav-section">
+                    Community
+                </div>
+
+                <a
+                    href="questions.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">?</span>
+                    <span>Questions</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="admin-sidebar-bottom">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-user-avatar"
+                        id="adminUserAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-info">
+
+                        <strong id="adminUserName">
+                            Admin
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                >
+                    Sign out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="admin-main">
+
+            <!-- PAGE HEADER -->
+
+            <header class="admin-topbar">
+
+                <div class="admin-page-title">
+
+                    <h1>
+                        Events
+                    </h1>
+
+                    <p>
+                        Create and manage events shown on the Panimalar Media website.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="../events.html"
+                    class="admin-view-site"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ↗ View Public Page
+                </a>
+
+            </header>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="admin-form-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- =================================================
+                 EVENT MANAGEMENT
+            ================================================== -->
+
+            <section class="admin-content-grid">
+
+
+                <!-- =================================================
+                     CREATE / EDIT EVENT
+                ================================================== -->
+
+                <section class="admin-panel">
+
+                    <div class="admin-panel-header">
+
+                        <h2 id="formTitle">
+                            Create Event
+                        </h2>
+
+                        <p>
+                            Add an event and publish it to the website.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="eventForm"
+                        novalidate
+                    >
+
+                        <!-- Hidden Event ID -->
+
+                        <input
+                            type="hidden"
+                            id="eventId"
+                        >
+
+
+                        <!-- TITLE -->
+
+                        <div class="admin-form-group">
+
+                            <label for="eventTitle">
+                                Title *
+                            </label>
+
+                            <input
+                                id="eventTitle"
+                                type="text"
+                                placeholder="Freshers Day 2026"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CATEGORY + SLUG -->
+
+                        <div class="admin-form-row">
+
+                            <div class="admin-form-group">
+
+                                <label for="eventCategory">
+                                    Category
+                                </label>
+
+                                <input
+                                    id="eventCategory"
+                                    type="text"
+                                    placeholder="Cultural"
+                                >
+
+                            </div>
+
+
+                            <div class="admin-form-group">
+
+                                <label for="eventSlug">
+                                    Slug
+                                </label>
+
+                                <input
+                                    id="eventSlug"
+                                    type="text"
+                                    placeholder="freshers-day-2026"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="admin-form-group">
+
+                            <label for="eventDescription">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="eventDescription"
+                                placeholder="Tell students what this event is about..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- DATE + LOCATION -->
+
+                        <div class="admin-form-row">
+
+                            <div class="admin-form-group">
+
+                                <label for="eventDate">
+                                    Event Date *
+                                </label>
+
+                                <input
+                                    id="eventDate"
+                                    type="date"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="admin-form-group">
+
+                                <label for="eventLocation">
+                                    Location
+                                </label>
+
+                                <input
+                                    id="eventLocation"
+                                    type="text"
+                                    placeholder="Main Auditorium"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- START + END TIME -->
+
+                        <div class="admin-form-row">
+
+                            <div class="admin-form-group">
+
+                                <label for="startTime">
+                                    Start Time
+                                </label>
+
+                                <input
+                                    id="startTime"
+                                    type="time"
+                                >
+
+                            </div>
+
+
+                            <div class="admin-form-group">
+
+                                <label for="endTime">
+                                    End Time
+                                </label>
+
+                                <input
+                                    id="endTime"
+                                    type="time"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- IMAGE URL -->
+
+                        <div class="admin-form-group">
+
+                            <label for="imageUrl">
+                                Image URL
+                            </label>
+
+                            <input
+                                id="imageUrl"
+                                type="url"
+                                placeholder="https://..."
+                            >
+
+                        </div>
+
+
+                        <!-- REGISTRATION URL -->
+
+                        <div class="admin-form-group">
+
+                            <label for="registrationUrl">
+                                Registration URL
+                            </label>
+
+                            <input
+                                id="registrationUrl"
+                                type="url"
+                                placeholder="https://forms.google.com/..."
+                            >
+
+                        </div>
+
+
+                        <!-- CHECKBOXES -->
+
+                        <div class="admin-checkbox-group">
+
+                            <label class="admin-checkbox">
+
+                                <input
+                                    id="featured"
+                                    type="checkbox"
+                                >
+
+                                <span>
+                                    Featured
+                                </span>
+
+                            </label>
+
+
+                            <label class="admin-checkbox">
+
+                                <input
+                                    id="published"
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span>
+                                    Published
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="admin-form-buttons">
+
+                            <button
+                                id="submitButton"
+                                class="admin-primary-button"
+                                type="submit"
+                            >
+                                Publish Event
+                            </button>
+
+
+                            <button
+                                id="cancelButton"
+                                class="admin-secondary-button"
+                                type="button"
+                                style="display:none;"
+                            >
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- =================================================
+                     EXISTING EVENTS
+                ================================================== -->
+
+                <section class="admin-panel">
+
+                    <div class="admin-panel-header">
+
+                        <h2>
+                            Existing Events
+                        </h2>
+
+                        <p>
+                            Edit, publish or delete your events.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        id="eventList"
+                        class="admin-event-list"
+                    >
+
+                        <div class="admin-loading">
+                            Loading events...
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/supabase.js"></script>
+
+
+    <!-- =====================================================
+         ADMIN AUTH
+    ====================================================== -->
+
+    <script src="../js/admin/auth.js"></script>
+
+
+    <!-- =====================================================
+         EVENTS ADMIN JS
+    ====================================================== -->
+
+    <script src="../js/admin/events.js"></script>
+
+</body>
+
+</html>
