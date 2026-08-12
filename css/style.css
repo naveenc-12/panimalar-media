@@ -1,12 +1,12 @@
 :root{
-  --bg:#0B0D12; --bg-1:#12151C; --bg-2:#181C26; --bg-3:#1F2430;
-  --border:#262B37; --border-soft:#1D212B;
-  --text:#F4F5F7; --text-dim:#9198A8; --text-faint:#5C6375;
-  --violet:#7C5CFF; --violet-soft:#7C5CFF26;
-  --pink:#FF5C8A; --pink-soft:#FF5C8A26;
+  --bg:#000000; --bg-1:#1b1c12; --bg-2:#262618; --bg-3:#302f1f;
+  --border:#281328; --border-soft:#292b1d;
+  --text:#ffffff; --text-dim:#9198A8; --text-faint:#5C6375;
+  --violet:#ffcc00; --violet-soft:#f7ff5c26;
+  --pink:#ff8706; --pink-soft:#ff8f3926;
   --cyan:#35D0C8; --cyan-soft:#35D0C826;
   --amber:#FFB648; --amber-soft:#FFB64826;
-  --green:#3DDC84; --green-soft:#3DDC8426;
+  --green:#dc7f3d; --green-soft:#3DDC8426;
   --grad:linear-gradient(135deg,var(--violet),var(--pink));
   --font-display:'Sora',sans-serif;
   --font-body:'Inter',sans-serif;
@@ -579,7 +579,7 @@ footer{border-top:1px solid var(--border-soft); padding:40px 0 30px; margin-top:
 .admin-question-card:hover,
 .question-item:hover,
 .admin-question-item:hover {
-    background: rgba(255,255,255,.025);
+    background: rgba(0, 0, 0, 0.025);
 }
 
 .question-card:last-child,
