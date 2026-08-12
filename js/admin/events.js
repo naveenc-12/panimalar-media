@@ -3,7 +3,7 @@
 /* =========================================================
    PANIMALAR MEDIA
    ADMIN EVENTS MANAGEMENT
-========================================================= */
+   ========================================================= */
 
 
 /* =========================================================
@@ -12,6 +12,13 @@
 
 let editingEventId = null;
 let events = [];
+
+
+/* =========================================================
+   SUPABASE STORAGE
+========================================================= */
+
+const EVENT_IMAGE_BUCKET = "media";
 
 
 /* =========================================================
@@ -24,6 +31,7 @@ function initializeEventsPage() {
     setupSlug();
     setupCancel();
     setupLogout();
+    setupImageUpload();
 
     loadEvents();
 }
@@ -238,6 +246,282 @@ function formatTime(value) {
 
 
 /* =========================================================
+   IMAGE UPLOAD SETUP
+========================================================= */
+
+function setupImageUpload() {
+
+    const imageFile =
+        $("imageFile");
+
+    const imageUrl =
+        $("imageUrl");
+
+    const preview =
+        $("imagePreview");
+
+    const previewImage =
+        $("imagePreviewImage");
+
+
+    if (!imageFile) {
+        return;
+    }
+
+
+    imageFile.addEventListener(
+        "change",
+        () => {
+
+            const file =
+                imageFile.files &&
+                imageFile.files[0];
+
+            if (!file) {
+
+                if (preview) {
+                    preview.style.display =
+                        "none";
+                }
+
+                return;
+            }
+
+
+            /* Validate image */
+
+            if (!file.type.startsWith("image/")) {
+
+                showMessage(
+                    "Please select an image file.",
+                    "error"
+                );
+
+                imageFile.value = "";
+
+                if (preview) {
+                    preview.style.display =
+                        "none";
+                }
+
+                return;
+            }
+
+
+            /* Limit: 10 MB */
+
+            const maxSize =
+                10 * 1024 * 1024;
+
+            if (file.size > maxSize) {
+
+                showMessage(
+                    "Image must be smaller than 10 MB.",
+                    "error"
+                );
+
+                imageFile.value = "";
+
+                if (preview) {
+                    preview.style.display =
+                        "none";
+                }
+
+                return;
+            }
+
+
+            /* Local preview */
+
+            if (previewImage) {
+
+                const objectUrl =
+                    URL.createObjectURL(file);
+
+                previewImage.src =
+                    objectUrl;
+
+                previewImage.onload =
+                    () => {
+
+                        URL.revokeObjectURL(
+                            objectUrl
+                        );
+
+                    };
+            }
+
+
+            if (preview) {
+                preview.style.display =
+                    "block";
+            }
+
+
+            /* Clear manually entered URL */
+
+            if (imageUrl) {
+                imageUrl.value = "";
+            }
+
+        }
+    );
+}
+
+
+/* =========================================================
+   UPLOAD EVENT IMAGE
+========================================================= */
+
+async function uploadEventImage(file) {
+
+    if (!file) {
+        return null;
+    }
+
+
+    if (!hasSupabaseClient()) {
+        throw new Error(
+            "Supabase client is not available."
+        );
+    }
+
+
+    /* Validate file */
+
+    if (!file.type.startsWith("image/")) {
+
+        throw new Error(
+            "Please select a valid image."
+        );
+    }
+
+
+    const maxSize =
+        10 * 1024 * 1024;
+
+    if (file.size > maxSize) {
+
+        throw new Error(
+            "Image must be smaller than 10 MB."
+        );
+    }
+
+
+    /*
+       Create a unique filename.
+
+       Example:
+       events/1723478293-freshers-day.webp
+    */
+
+    const originalName =
+        file.name
+            .toLowerCase()
+            .replace(
+                /[^a-z0-9.]+/g,
+                "-"
+            );
+
+    const extension =
+        originalName.includes(".")
+            ? originalName.substring(
+                originalName.lastIndexOf(".")
+            )
+            : "";
+
+    const baseName =
+        originalName
+            .replace(
+                /\.[^/.]+$/,
+                ""
+            )
+            .substring(
+                0,
+                80
+            );
+
+    const uniqueName =
+        `${Date.now()}-${Math.random()
+            .toString(36)
+            .substring(2, 8)}-${baseName || "event"}${extension}`;
+
+
+    const filePath =
+        `events/${uniqueName}`;
+
+
+    console.log(
+        "[Events] Uploading image:",
+        filePath
+    );
+
+
+    /* Upload */
+
+    const {
+        error: uploadError
+    } =
+        await supabaseClient
+            .storage
+            .from(EVENT_IMAGE_BUCKET)
+            .upload(
+                filePath,
+                file,
+                {
+                    cacheControl: "3600",
+                    upsert: false,
+                    contentType: file.type
+                }
+            );
+
+
+    if (uploadError) {
+
+        console.error(
+            "[Events] Image upload error:",
+            uploadError
+        );
+
+        throw uploadError;
+    }
+
+
+    /* Get public URL */
+
+    const {
+        data
+    } =
+        supabaseClient
+            .storage
+            .from(EVENT_IMAGE_BUCKET)
+            .getPublicUrl(
+                filePath
+            );
+
+
+    if (
+        !data ||
+        !data.publicUrl
+    ) {
+
+        throw new Error(
+            "Image uploaded but public URL could not be generated."
+        );
+    }
+
+
+    console.log(
+        "[Events] Image uploaded:",
+        data.publicUrl
+    );
+
+
+    return data.publicUrl;
+}
+
+
+/* =========================================================
    LOAD EVENTS
 ========================================================= */
 
@@ -411,6 +695,24 @@ function renderEvents() {
                         <div class="event-head">
 
                             <div>
+
+                                ${
+                                    event.image_url
+                                        ? `
+                                            <img
+                                                src="${escapeHTML(event.image_url)}"
+                                                alt="${title}"
+                                                style="
+                                                    width:100%;
+                                                    max-height:220px;
+                                                    object-fit:cover;
+                                                    border-radius:12px;
+                                                    margin-bottom:16px;
+                                                "
+                                            >
+                                        `
+                                        : ""
+                                }
 
                                 <h3 class="event-title">
                                     ${title}
@@ -708,16 +1010,21 @@ function setupLogout() {
 
 
     /*
-    If this page doesn't have logoutButton,
-    simply don't attach anything.
+       Some versions of the admin HTML
+       use adminLogoutButton.
     */
 
-    if (!button) {
+    const actualButton =
+        button ||
+        $("adminLogoutButton");
+
+
+    if (!actualButton) {
         return;
     }
 
 
-    button.addEventListener(
+    actualButton.addEventListener(
         "click",
         async () => {
 
@@ -786,6 +1093,10 @@ async function saveEvent() {
 
     const imageInput =
         $("imageUrl");
+
+
+    const imageFileInput =
+        $("imageFile");
 
 
     const registrationInput =
@@ -861,7 +1172,7 @@ async function saveEvent() {
             : null;
 
 
-    const imageUrl =
+    let imageUrl =
         imageInput
             ? imageInput.value.trim() || null
             : null;
@@ -907,61 +1218,119 @@ async function saveEvent() {
     }
 
 
-    const payload = {
-
-        title,
-
-        slug,
-
-        description,
-
-        category:
-            category || "General",
-
-        event_date:
-            eventDate,
-
-        start_time:
-            startTime,
-
-        end_time:
-            endTime,
-
-        location,
-
-        image_url:
-            imageUrl,
-
-        registration_url:
-            registrationUrl,
-
-        featured,
-
-        published,
-
-        updated_at:
-            new Date().toISOString()
-
-    };
-
-
     const submitButton =
         $("submitButton");
 
 
-    if (submitButton) {
-
-        submitButton.disabled =
-            true;
-
-        submitButton.textContent =
-            editingEventId
-                ? "Saving..."
-                : "Publishing...";
-    }
-
-
     try {
+
+        /* Disable button */
+
+        if (submitButton) {
+
+            submitButton.disabled =
+                true;
+
+            submitButton.textContent =
+                "Preparing...";
+        }
+
+
+        /* =====================================================
+           IMAGE UPLOAD
+        ===================================================== */
+
+        const selectedFile =
+            imageFileInput &&
+            imageFileInput.files &&
+            imageFileInput.files[0];
+
+
+        if (selectedFile) {
+
+            if (submitButton) {
+                submitButton.textContent =
+                    "Uploading image...";
+            }
+
+
+            imageUrl =
+                await uploadEventImage(
+                    selectedFile
+                );
+
+
+            /*
+               Put generated public URL
+               into Image URL field.
+            */
+
+            if (imageInput) {
+                imageInput.value =
+                    imageUrl;
+            }
+
+        }
+
+
+        /* =====================================================
+           PAYLOAD
+        ===================================================== */
+
+        const payload = {
+
+            title,
+
+            slug,
+
+            description,
+
+            category:
+                category || "General",
+
+            event_date:
+                eventDate,
+
+            start_time:
+                startTime,
+
+            end_time:
+                endTime,
+
+            location,
+
+            image_url:
+                imageUrl,
+
+            registration_url:
+                registrationUrl,
+
+            featured,
+
+            published,
+
+            updated_at:
+                new Date().toISOString()
+
+        };
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        if (submitButton) {
+
+            submitButton.textContent =
+                editingEventId
+                    ? "Saving..."
+                    : "Publishing...";
+        }
+
+
+        /* =====================================================
+           INSERT / UPDATE
+        ===================================================== */
 
         let result;
 
@@ -1112,8 +1481,10 @@ function editEvent(event) {
 
 
     if (eventId) {
+
         eventId.value =
             event.id || "";
+
     }
 
 
@@ -1169,6 +1540,44 @@ function editEvent(event) {
         "imageUrl",
         event.image_url
     );
+
+
+    /* Clear file input */
+
+    const imageFile =
+        $("imageFile");
+
+    if (imageFile) {
+        imageFile.value = "";
+    }
+
+
+    /* Show existing image */
+
+    const preview =
+        $("imagePreview");
+
+    const previewImage =
+        $("imagePreviewImage");
+
+
+    if (
+        preview &&
+        previewImage &&
+        event.image_url
+    ) {
+
+        previewImage.src =
+            event.image_url;
+
+        preview.style.display =
+            "block";
+
+    } else if (preview) {
+
+        preview.style.display =
+            "none";
+    }
 
 
     setValue(
@@ -1468,6 +1877,34 @@ function resetForm() {
 
     if (eventId) {
         eventId.value = "";
+    }
+
+
+    /* Clear image preview */
+
+    const preview =
+        $("imagePreview");
+
+    const previewImage =
+        $("imagePreviewImage");
+
+
+    if (preview) {
+        preview.style.display =
+            "none";
+    }
+
+
+    if (previewImage) {
+        previewImage.src = "";
+    }
+
+
+    const imageFile =
+        $("imageFile");
+
+    if (imageFile) {
+        imageFile.value = "";
     }
 }
 

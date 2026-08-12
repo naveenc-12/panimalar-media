@@ -383,18 +383,63 @@
                         </div>
 
 
+                        <!-- =================================================
+                             EVENT IMAGE
+                        ================================================== -->
+
+                        <div class="admin-form-group">
+
+                            <label for="imageFile">
+                                Event Image
+                            </label>
+
+                            <input
+                                id="imageFile"
+                                type="file"
+                                accept="image/*"
+                            >
+
+                            <small>
+                                Upload an image from your device.
+                            </small>
+
+                        </div>
+
+
                         <!-- IMAGE URL -->
 
                         <div class="admin-form-group">
 
                             <label for="imageUrl">
                                 Image URL
+                                <span>(optional)</span>
                             </label>
 
                             <input
                                 id="imageUrl"
                                 type="url"
                                 placeholder="https://..."
+                            >
+
+                            <small>
+                                You can either upload an image from your device
+                                or paste an image URL.
+                            </small>
+
+                        </div>
+
+
+                        <!-- IMAGE PREVIEW -->
+
+                        <div
+                            id="imagePreview"
+                            style="display:none;"
+                        >
+
+                            <img
+                                id="imagePreviewImage"
+                                src=""
+                                alt="Event image preview"
                             >
 
                         </div>
