@@ -1,12 +1,12 @@
 :root{
   --bg:#000000; --bg-1:#1b1c12; --bg-2:#262618; --bg-3:#302f1f;
-  --border:#281328; --border-soft:#292b1d;
+  --border:#281328; --border-soft:#231d2b;
   --text:#ffffff; --text-dim:#9198A8; --text-faint:#5C6375;
-  --violet:#ffcc00; --violet-soft:#f7ff5c26;
-  --pink:#ff8706; --pink-soft:#ff8f3926;
+  --violet:#8c00ff; --violet-soft:#d15cff26;
+  --pink:#a806ff; --pink-soft:#9239ff26;
   --cyan:#35D0C8; --cyan-soft:#35D0C826;
-  --amber:#FFB648; --amber-soft:#FFB64826;
-  --green:#dc7f3d; --green-soft:#3DDC8426;
+  --amber:#e748ff; --amber-soft:#c848ff26;
+  --green:#3ddc65; --green-soft:#3DDC8426;
   --grad:linear-gradient(135deg,var(--violet),var(--pink));
   --font-display:'Sora',sans-serif;
   --font-body:'Inter',sans-serif;
