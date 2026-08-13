@@ -1,11 +1,11 @@
 :root{
-  --bg:#000000; --bg-1:#1b1c12; --bg-2:#262618; --bg-3:#302f1f;
-  --border:#281328; --border-soft:#231d2b;
+  --bg:#000000; --bg-1:#121a1c; --bg-2:#181c26; --bg-3:#1f2830;
+  --border:#13081f; --border-soft:#1d0123;
   --text:#ffffff; --text-dim:#9198A8; --text-faint:#5C6375;
-  --violet:#8c00ff; --violet-soft:#d15cff26;
-  --pink:#a806ff; --pink-soft:#9239ff26;
+  --violet:#8000ff; --violet-soft:#c35cff26;
+  --pink:#b006ff; --pink-soft:#ff39e826;
   --cyan:#35D0C8; --cyan-soft:#35D0C826;
-  --amber:#e748ff; --amber-soft:#c848ff26;
+  --amber:#b648ff; --amber-soft:#9148ff26;
   --green:#3ddc65; --green-soft:#3DDC8426;
   --grad:linear-gradient(135deg,var(--violet),var(--pink));
   --font-display:'Sora',sans-serif;
@@ -52,7 +52,7 @@ h1,h2,h3,h4{font-family:var(--font-display); line-height:1.15; letter-spacing:-0
 .btn-block{width:100%; justify-content:center;}
 
 .badge{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:6px; display:inline-flex; align-items:center; gap:5px;}
-.badge-violet{background:var(--violet-soft); color:#B7A5FF;}
+.badge-violet{background:var(--violet-soft); color:#a5dfff;}
 .badge-pink{background:var(--pink-soft); color:#FFAAC2;}
 .badge-cyan{background:var(--cyan-soft); color:#7FE6E0;}
 .badge-amber{background:var(--amber-soft); color:#FFCE85;}
