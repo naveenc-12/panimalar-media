@@ -6,6 +6,28 @@
 
     <title>Bus Routes - Admin | Panimalar Media</title>
 
+        <!-- Public / Shared CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+    <!-- Common Admin CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -575,101 +597,200 @@
 
 <div class="admin-layout">
 
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
 
-    <aside class="sidebar">
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
 
-        <div>
-            <div class="brand">
-                <div class="brand-logo">PM</div>
+        <aside class="admin-sidebar">
 
-                <div class="brand-text">
-                    <h2>Panimalar Media</h2>
-                    <p>Admin Panel</p>
-                </div>
-            </div>
+            <!-- BRAND -->
+            <div class="admin-sidebar-brand">
 
-            <div class="nav-section">
-
-                <div class="nav-title">
-                    OVERVIEW
+                <div class="admin-sidebar-logo">
+                    PM
                 </div>
 
-                <a href="dashboard.html" class="nav-link">
-                    <span class="nav-icon">▦</span>
-                    Dashboard
-                </a>
+                <div class="admin-sidebar-brand-text">
 
-            </div>
+                    <strong>
+                        Panimalar Media
+                    </strong>
 
-            <div class="nav-section">
+                    <span>
+                        Admin Panel
+                    </span>
 
-                <div class="nav-title">
-                    CONTENT
                 </div>
-
-                <a href="events.html" class="nav-link">
-                    <span class="nav-icon">◷</span>
-                    Events
-                </a>
-
-                <a href="announcements.html" class="nav-link">
-                    <span class="nav-icon">!</span>
-                    Announcements
-                </a>
-
-                <a href="resources.html" class="nav-link">
-                    <span class="nav-icon">▤</span>
-                    Resources
-                </a>
-
-                <a href="gallery.html" class="nav-link">
-                    <span class="nav-icon">▧</span>
-                    Gallery
-                </a>
-
-                <a href="bus-routes.html" class="nav-link active">
-                    <span class="nav-icon">▱</span>
-                    Bus Routes
-                </a>
 
             </div>
 
-            <div class="nav-section">
 
-                <div class="nav-title">
-                    COMMUNITY
+            <!-- NAVIGATION -->
+            <nav class="admin-nav">
+
+                <!-- OVERVIEW -->
+                <div class="admin-nav-section">
+                    Overview
                 </div>
 
-                <a href="questions.html" class="nav-link">
-                    <span class="nav-icon">?</span>
-                    Questions
+                <a
+                    href="dashboard.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
                 </a>
 
-            </div>
-        </div>
 
-        <div class="sidebar-bottom">
-
-            <div class="admin-user">
-                <div class="admin-avatar">P</div>
-
-                <div>
-                    <strong>Panimalar Media Admin</strong>
-                    <span>Administrator</span>
+                <!-- CONTENT -->
+                <div class="admin-nav-section">
+                    Content
                 </div>
+
+                <a
+                    href="announcements.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        !
+                    </span>
+
+                    <span>
+                        Announcements
+                    </span>
+                </a>
+
+                <a
+                    href="events.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Events
+                    </span>
+                </a>
+
+                <a
+                    href="resources.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▤
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
+                </a>
+
+                <a
+                    href="gallery.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▧
+                    </span>
+
+                    <span>
+                        Gallery
+                    </span>
+                </a>
+
+                <a
+                    href="bus-routes.html"
+                    class="admin-nav-item active"
+                >
+                    <span class="admin-nav-icon">
+                        ▱
+                    </span>
+
+                    <span>
+                        Bus Routes
+                    </span>
+                </a>
+
+                <a
+                    href="clubs.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◆
+                    </span>
+
+                    <span>
+                        Clubs
+                    </span>
+                </a>
+
+
+                <!-- COMMUNITY -->
+                <div class="admin-nav-section">
+                    Community
+                </div>
+
+                <a
+                    href="questions.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ?
+                    </span>
+
+                    <span>
+                        Questions
+                    </span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="admin-sidebar-bottom">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-user-avatar"
+                        id="adminUserAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-info">
+
+                        <strong id="adminUserName">
+                            Admin
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                >
+                    Sign out
+                </button>
+
             </div>
 
-            <button id="logoutBtn" class="logout-btn">
-                Sign out
-            </button>
-
-        </div>
-
-    </aside>
-
+        </aside>
 
     <!-- =========================
          MAIN CONTENT

@@ -69,103 +69,36 @@
 
     <header class="topbar">
 
-        <div class="container topbar-inner">
+    <div class="container topbar-inner">
 
-
-            <!-- Brand -->
-
-            <a
-                href="index.html"
-                class="brand"
-                aria-label="Panimalar Media Home"
-            >
-
-              <img src="assets/logos/Logo.png"alt=""class="brand-mark"aria-hidden="true">
-
-                <span class="brand-text">
-                    PANIMALAR <strong>ONE HUB</strong>
-                </span>
-
-            </a>
-
-
-            <!-- Desktop Navigation -->
-
-            <nav
-                class="mainnav"
-                aria-label="Main navigation"
-            >
-
-                <a
-                    href="index.html"
-                    class="active"
-                >
-                    Home
-                </a>
-
-                <a href="events.html">
-                    Events
-                </a>
-
-                <a href="ask-seniors.html">
-                    Ask &amp; Learn
-                </a>
-
-                <a href="resources.html">
-                    Resources
-                </a>
-
-                <a href="bus-routes.html">
-                    Bus Routes
-                </a>
-
-                <a href="gallery.html">
-                    Gallery
-                </a>
-
-                <a href="announcements.html">
-                    Announcements
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-            </nav>
-
-
-            <!-- Header Actions -->
-
-            <div class="topbar-actions">
-
-                <button
-                    class="icon-btn"
-                    id="menuToggle"
-                    type="button"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    aria-controls="mobileNav"
-                >
-                    ☰
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- Mobile Navigation -->
-
-        <nav
-            class="mobilenav"
-            id="mobileNav"
-            aria-label="Mobile navigation"
+        <!-- BRAND -->
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="Panimalar One Hub Home"
         >
 
-            <a
-                href="index.html"
-                class="active"
+            <img
+                src="assets/logos/Logo.png"
+                alt="Panimalar One Hub"
+                class="brand-mark"
             >
+
+            <span class="brand-text">
+                PANIMALAR <strong>ONE HUB</strong>
+            </span>
+
+        </a>
+
+
+        <!-- DESKTOP NAV -->
+        <nav
+            class="mainnav"
+            id="mainnav"
+            aria-label="Main navigation"
+        >
+
+            <a href="index.html">
                 Home
             </a>
 
@@ -193,14 +126,57 @@
                 Announcements
             </a>
 
+            <a href="clubs.html">
+                Clubs
+            </a>
+
             <a href="about.html">
                 About
             </a>
 
         </nav>
 
-    </header>
 
+        <!-- RIGHT SIDE -->
+        <div class="topbar-actions">
+
+            <button
+                class="icon-btn"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+            >
+                ☰
+            </button>
+
+            <div id="authArea"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MOBILE NAV -->
+    <div
+        class="mobilenav"
+        id="mobileNav"
+    >
+
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="ask-seniors.html">Ask &amp; Learn</a>
+        <a href="resources.html">Resources</a>
+        <a href="bus-routes.html">Bus Routes</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="about.html">About</a>
+
+    </div>
+
+</header>
 
 
     <!-- =====================================================
@@ -221,45 +197,69 @@
 
             <div class="container hero-inner">
 
-                <span class="eyebrow">
-                    Panimalar Media presents
-                </span>
+                <div class="hero-copy">
 
+                    <span class="eyebrow">
+                        Panimalar Media presents
+                    </span>
 
-                <h1>
+                    <h1>
+                        Your campus,
+                        <br>
+                        one hub away.
+                    </h1>
 
-                    Your campus,
-                    <br>
-                    one hub away.
+                    <p class="lead">
+                        Find events worth showing up to, get real answers
+                        from seniors & staffs, check your bus timing and grab the
+                        resources you actually need - all in one place.
+                    </p>
 
-                </h1>
+                    <div class="hero-actions">
+                        <a href="events.html" class="btn btn-grad">
+                            Browse events
+                        </a>
 
+                        <a href="ask-seniors.html" class="btn btn-ghost">
+                            Ask a senior
+                        </a>
+                    </div>
 
-                <p class="lead">
+                </div>
 
-                    Find events worth showing up to, get real answers
-                    from seniors & staffs, check your bus timing and grab the
-                    resources you actually need - all in one place.
+                <!-- HERO IMAGE SLIDER -->
+                <div class="hero-slider" id="heroSlider" aria-label="Featured campus highlights">
 
-                </p>
+                    <div class="hero-slide active">
+                        <img src="assets/hero/banner-1.jpg">
+                    </div>
 
+                    <div class="hero-slide">
+                        <img src="assets/hero/banner-2.jpg">
+                    </div>
 
-                <div class="hero-actions">
+                    <div class="hero-slide">
+                        <img src="assets/hero/banner-3.jpg">
+                    </div>
 
-                    <a
-                        href="events.html"
-                        class="btn btn-grad"
-                    >
-                        Browse events
-                    </a>
+                    <div class="hero-slide">
+                        <img src="assets/hero/banner-4.jpg">
+                    </div>
 
+                    <button class="hero-slider-prev" id="heroSliderPrev" type="button" aria-label="Previous banner">
+                        &#10094;
+                    </button>
 
-                    <a
-                        href="ask-seniors.html"
-                        class="btn btn-ghost"
-                    >
-                        Ask a senior
-                    </a>
+                    <button class="hero-slider-next" id="heroSliderNext" type="button" aria-label="Next banner">
+                        &#10095;
+                    </button>
+
+                    <div class="hero-slider-dots" id="heroSliderDots" aria-label="Slider navigation">
+                        <button type="button" class="hero-dot active" data-slide="0" aria-label="Show banner 1"></button>
+                        <button type="button" class="hero-dot" data-slide="1" aria-label="Show banner 2"></button>
+                        <button type="button" class="hero-dot" data-slide="2" aria-label="Show banner 3"></button>
+                        <button type="button" class="hero-dot" data-slide="3" aria-label="Show banner 4"></button>
+                    </div>
 
                 </div>
 
@@ -1504,6 +1504,60 @@
 
        </script>
 
+
+    <!-- HERO IMAGE SLIDER -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll(".hero-slide");
+            const dots = document.querySelectorAll(".hero-dot");
+            const prevButton = document.getElementById("heroSliderPrev");
+            const nextButton = document.getElementById("heroSliderNext");
+
+            if (!slides.length) return;
+
+            let currentSlide = 0;
+            let sliderTimer;
+
+            function showSlide(index) {
+                currentSlide = (index + slides.length) % slides.length;
+
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle("active", i === currentSlide);
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentSlide);
+                });
+            }
+
+            function startSlider() {
+                clearInterval(sliderTimer);
+                sliderTimer = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            }
+
+            prevButton?.addEventListener("click", () => {
+                showSlide(currentSlide - 1);
+                startSlider();
+            });
+
+            nextButton?.addEventListener("click", () => {
+                showSlide(currentSlide + 1);
+                startSlider();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener("click", () => {
+                    showSlide(index);
+                    startSlider();
+                });
+            });
+
+            showSlide(0);
+            startSlider();
+        });
+    </script>
 
     <!-- GLOBAL JAVASCRIPT -->
     <script src="js/main.js"></script>

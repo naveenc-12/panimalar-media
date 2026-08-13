@@ -7,13 +7,35 @@
 
     <title>Resources - Panimalar Media Admin</title>
 
-    <!-- EXISTING ADMIN CSS -->
-    <link rel="stylesheet" href="../css/admin.css">
+        <!-- Public / Shared CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+    <!-- Common Admin CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    
 </head>
 
 <body>
 
     <div class="admin-layout">
+
 
         <!-- =====================================================
              SIDEBAR
@@ -29,8 +51,15 @@
                 </div>
 
                 <div class="admin-sidebar-brand-text">
-                    <strong>Panimalar Media</strong>
-                    <span>Admin Panel</span>
+
+                    <strong>
+                        Panimalar Media
+                    </strong>
+
+                    <span>
+                        Admin Panel
+                    </span>
+
                 </div>
 
             </div>
@@ -41,75 +70,123 @@
 
                 <!-- OVERVIEW -->
                 <div class="admin-nav-section">
-                    OVERVIEW
+                    Overview
                 </div>
 
                 <a
-                    href="index.html"
+                    href="dashboard.html"
                     class="admin-nav-item"
                 >
-                    <span class="admin-nav-icon">▦</span>
-                    <span>Dashboard</span>
+                    <span class="admin-nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
                 </a>
 
 
                 <!-- CONTENT -->
                 <div class="admin-nav-section">
-                    CONTENT
+                    Content
                 </div>
-
-                <a
-                    href="events.html"
-                    class="admin-nav-item"
-                >
-                    <span class="admin-nav-icon">◷</span>
-                    <span>Events</span>
-                </a>
 
                 <a
                     href="announcements.html"
                     class="admin-nav-item"
                 >
-                    <span class="admin-nav-icon">!</span>
-                    <span>Announcements</span>
+                    <span class="admin-nav-icon">
+                        !
+                    </span>
+
+                    <span>
+                        Announcements
+                    </span>
+                </a>
+
+                <a
+                    href="events.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Events
+                    </span>
                 </a>
 
                 <a
                     href="resources.html"
                     class="admin-nav-item active"
                 >
-                    <span class="admin-nav-icon">▤</span>
-                    <span>Resources</span>
+                    <span class="admin-nav-icon">
+                        ▤
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
                 </a>
 
                 <a
                     href="gallery.html"
                     class="admin-nav-item"
                 >
-                    <span class="admin-nav-icon">▧</span>
-                    <span>Gallery</span>
+                    <span class="admin-nav-icon">
+                        ▧
+                    </span>
+
+                    <span>
+                        Gallery
+                    </span>
                 </a>
 
                 <a
                     href="bus-routes.html"
                     class="admin-nav-item"
                 >
-                    <span class="admin-nav-icon">▱</span>
-                    <span>Bus Routes</span>
+                    <span class="admin-nav-icon">
+                        ▱
+                    </span>
+
+                    <span>
+                        Bus Routes
+                    </span>
+                </a>
+
+                <a
+                    href="clubs.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◆
+                    </span>
+
+                    <span>
+                        Clubs
+                    </span>
                 </a>
 
 
                 <!-- COMMUNITY -->
                 <div class="admin-nav-section">
-                    COMMUNITY
+                    Community
                 </div>
 
                 <a
                     href="questions.html"
                     class="admin-nav-item"
                 >
-                    <span class="admin-nav-icon">?</span>
-                    <span>Questions</span>
+                    <span class="admin-nav-icon">
+                        ?
+                    </span>
+
+                    <span>
+                        Questions
+                    </span>
                 </a>
 
             </nav>
@@ -120,13 +197,23 @@
 
                 <div class="admin-user-mini">
 
-                    <div class="admin-user-avatar">
-                        P
+                    <div
+                        class="admin-user-avatar"
+                        id="adminUserAvatar"
+                    >
+                        A
                     </div>
 
                     <div class="admin-user-info">
-                        <strong>Panimalar Media Admin</strong>
-                        <span>Administrator</span>
+
+                        <strong id="adminUserName">
+                            Admin
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
                     </div>
 
                 </div>
@@ -135,7 +222,7 @@
                 <button
                     type="button"
                     class="admin-logout-button"
-                    id="signOutBtn"
+                    id="adminLogoutButton"
                 >
                     Sign out
                 </button>
@@ -143,7 +230,6 @@
             </div>
 
         </aside>
-
 
         <!-- =====================================================
              MAIN CONTENT

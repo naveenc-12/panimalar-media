@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Clubs - Admin | Panimalar Media</title>
+
+    <!-- ADMIN CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ADMIN LAYOUT
+====================================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="admin-sidebar">
+
+            <!-- BRAND -->
+            <div class="admin-sidebar-brand">
+
+                <div class="admin-sidebar-logo">
+                    PM
+                </div>
+
+                <div class="admin-sidebar-brand-text">
+
+                    <strong>
+                        Panimalar Media
+                    </strong>
+
+                    <span>
+                        Admin Panel
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav class="admin-nav">
+
+                <!-- OVERVIEW -->
+                <div class="admin-nav-section">
+                    Overview
+                </div>
+
+                <a
+                    href="dashboard.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <!-- CONTENT -->
+                <div class="admin-nav-section">
+                    Content
+                </div>
+
+                <a
+                    href="announcements.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        !
+                    </span>
+
+                    <span>
+                        Announcements
+                    </span>
+                </a>
+
+                <a
+                    href="events.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Events
+                    </span>
+                </a>
+
+                <a
+                    href="resources.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▤
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
+                </a>
+
+                <a
+                    href="gallery.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▧
+                    </span>
+
+                    <span>
+                        Gallery
+                    </span>
+                </a>
+
+                <a
+                    href="bus-routes.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▱
+                    </span>
+
+                    <span>
+                        Bus Routes
+                    </span>
+                </a>
+
+                <a
+                    href="clubs.html"
+                    class="admin-nav-item active"
+                >
+                    <span class="admin-nav-icon">
+                        ◆
+                    </span>
+
+                    <span>
+                        Clubs
+                    </span>
+                </a>
+
+
+                <!-- COMMUNITY -->
+                <div class="admin-nav-section">
+                    Community
+                </div>
+
+                <a
+                    href="questions.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ?
+                    </span>
+
+                    <span>
+                        Questions
+                    </span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="admin-sidebar-bottom">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-user-avatar"
+                        id="adminUserAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-info">
+
+                        <strong id="adminUserName">
+                            Admin
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                >
+                    Sign out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="admin-page-header">
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    CONTENT MANAGEMENT
+                </div>
+
+                <h1>
+                    Clubs
+                </h1>
+
+                <p>
+                    Add and manage college clubs,
+                    logos, and coordinators.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTENT GRID
+        ================================================== -->
+
+        <section class="admin-content-grid">
+
+
+            <!-- =================================================
+                 CREATE / EDIT CLUB
+            ================================================== -->
+
+            <div class="admin-panel">
+
+
+                <div class="admin-panel-header">
+
+                    <h2 id="clubFormTitle">
+                        Add Club
+                    </h2>
+
+                    <p>
+                        Add a club and its coordinator details.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="clubForm"
+                    class="admin-form"
+                >
+
+
+                    <!-- CLUB NAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="clubName">
+                            Club Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="clubName"
+                            name="clubName"
+                            placeholder="Enter club name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="admin-form-group">
+
+                        <label for="clubDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="clubDescription"
+                            name="clubDescription"
+                            rows="4"
+                            placeholder="Write a short description about the club..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- LOGO -->
+
+                    <div class="admin-form-group">
+
+                        <label for="clubLogo">
+                            Club Logo
+                        </label>
+
+                        <input
+                            type="file"
+                            id="clubLogo"
+                            name="clubLogo"
+                            accept="image/png,image/jpeg,image/webp"
+                        >
+
+                        <small class="admin-help-text">
+                            PNG, JPG or WebP. Recommended: square logo.
+                        </small>
+
+
+                        <!-- Existing / Preview -->
+
+                        <div
+                            id="clubLogoPreview"
+                            class="club-admin-logo-preview"
+                            style="display:none;"
+                        >
+
+                            <img
+                                id="clubLogoPreviewImage"
+                                src=""
+                                alt="Club logo preview"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COORDINATOR NAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="coordinatorName">
+                            Coordinator Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="coordinatorName"
+                            name="coordinatorName"
+                            placeholder="Enter coordinator name"
+                        >
+
+                    </div>
+
+
+
+                    <!-- COORDINATOR EMAIL -->
+
+                    <div class="admin-form-group">
+
+                        <label for="Club Email">
+                            Club Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="coordinatorEmail"
+                            name="coordinatorEmail"
+                            placeholder="yourclub@gmail.com"
+                        >
+
+                    </div>
+
+
+
+                    <!-- PUBLISHED -->
+
+                    <div class="admin-checkbox-row">
+
+                        <input
+                            type="checkbox"
+                            id="clubPublished"
+                            checked
+                        >
+
+                        <label for="clubPublished">
+                            Publish this club
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="admin-form-buttons">
+
+
+                        <button
+                            type="submit"
+                            id="clubSubmit"
+                            class="admin-primary-button"
+                        >
+                            Add Club
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="clubCancel"
+                            class="admin-secondary-button"
+                            style="display:none;"
+                        >
+                            Cancel
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EXISTING CLUBS
+            ================================================== -->
+
+            <div class="admin-panel">
+
+
+                <div class="admin-panel-header">
+
+                    <h2>
+                        Existing Clubs
+                    </h2>
+
+                    <p>
+                        Edit or delete club information.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="clubList"
+                    class="admin-club-list"
+                >
+
+                    <div class="admin-loading">
+                        Loading clubs...
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/supabase.js"></script>
+
+
+
+<!-- =====================================================
+     CLUBS ADMIN JS
+====================================================== -->
+
+<script src="../js/admin/clubs.js"></script>
+
+
+</body>
+
+</html>

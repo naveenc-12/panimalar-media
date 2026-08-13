@@ -710,27 +710,63 @@ async function postReply(
 
     if (error) {
 
-        console.error(
-            "Reply insert error:",
-            error
-        );
+    console.error(
+        "Reply insert error:",
+        error
+    );
 
+    let message =
+        "Your reply couldn't be posted.";
 
-        alert(
-            "Failed to post reply:\n\n" +
-            error.message
-        );
+    if (
+        error.message.includes(
+            "phone numbers"
+        )
+    ) {
 
+        message =
+            "Please don't share phone numbers.";
 
-        button.disabled = false;
+    } else if (
+        error.message.includes(
+            "email addresses"
+        )
+    ) {
 
-        button.textContent =
-            "Post reply";
+        message =
+            "Please don't share email addresses.";
 
-        return;
+    } else if (
+        error.message.includes(
+            "Links are not allowed"
+        )
+    ) {
+
+        message =
+            "Links are not allowed in replies.";
+
+    } else if (
+        error.message.includes(
+            "word that is not allowed"
+        )
+    ) {
+
+        message =
+            "Your reply contains language that isn't allowed.";
 
     }
 
+    alert(
+        "⚠️ " + message
+    );
+
+    button.disabled = false;
+
+    button.textContent =
+        "Post reply";
+
+    return;
+}
 
     // Add immediately to local data
 
@@ -818,26 +854,63 @@ if (questionForm) {
 
             if (error) {
 
-                console.error(
-                    "Question insert error:",
-                    error
-                );
+    console.error(
+        "Question insert error:",
+        error
+    );
 
+    let message =
+        "Your question couldn't be posted.";
 
-                alert(
-                    "Failed to post question:\n\n" +
-                    error.message
-                );
+    if (
+        error.message.includes(
+            "phone numbers"
+        )
+    ) {
 
+        message =
+            "Please don't share phone numbers.";
 
-                questionSubmit.disabled = false;
+    } else if (
+        error.message.includes(
+            "email addresses"
+        )
+    ) {
 
-                questionSubmit.textContent =
-                    "Post anonymously";
+        message =
+            "Please don't share email addresses.";
 
-                return;
+    } else if (
+        error.message.includes(
+            "Links are not allowed"
+        )
+    ) {
 
-            }
+        message =
+            "Links are not allowed in questions.";
+
+    } else if (
+        error.message.includes(
+            "word that is not allowed"
+        )
+    ) {
+
+        message =
+            "Your question contains language that isn't allowed.";
+
+    }
+
+    alert(
+        "⚠️ " + message
+    );
+
+    questionSubmit.disabled = false;
+
+    questionSubmit.textContent =
+        "Post anonymously";
+
+    return;
+}
 
 
             allQuestions.unshift(data);
@@ -983,3 +1056,4 @@ function escapeHTML(value) {
 // ============================================
 
 loadQuestions();
+

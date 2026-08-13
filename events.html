@@ -64,106 +64,40 @@
 
     <header class="topbar">
 
-        <div class="container topbar-inner">
+    <div class="container topbar-inner">
 
-            <!-- BRAND -->
+        <!-- BRAND -->
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="Panimalar One Hub Home"
+        >
 
-            <a
-                href="index.html"
-                class="brand"
-                aria-label="Panimalar Media Home"
+            <img
+                src="assets/logos/Logo.png"
+                alt="Panimalar One Hub"
+                class="brand-mark"
             >
 
-                <img src="assets/logos/Logo.png"alt=""class="brand-mark"aria-hidden="true">
+            <span class="brand-text">
+                PANIMALAR <strong>ONE HUB</strong>
+            </span>
 
-                <span class="brand-text">
-                    PANIMALAR <strong>ONE HUB</strong>
-                </span>
-
-            </a>
+        </a>
 
 
-            <!-- DESKTOP NAVIGATION -->
-
-            <nav
-                class="mainnav"
-                aria-label="Main navigation"
-            >
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a
-                    href="events.html"
-                    class="active"
-                >
-                    Events
-                </a>
-
-                <a href="ask-seniors.html">
-                    Ask &amp; Learn
-                </a>
-
-                <a href="resources.html">
-                    Resources
-                </a>
-
-                <a href="bus-routes.html">
-                    Bus Routes
-                </a>
-
-                <a href="gallery.html">
-                    Gallery
-                </a>
-
-                <a href="announcements.html">
-                    Announcements
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-            </nav>
-
-
-            <!-- MOBILE MENU BUTTON -->
-
-            <div class="topbar-actions">
-
-                <button
-                    class="icon-btn"
-                    id="menuToggle"
-                    type="button"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    aria-controls="mobileNav"
-                >
-                    ☰
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- MOBILE NAVIGATION -->
-
+        <!-- DESKTOP NAV -->
         <nav
-            class="mobilenav"
-            id="mobileNav"
-            aria-label="Mobile navigation"
+            class="mainnav"
+            id="mainnav"
+            aria-label="Main navigation"
         >
 
             <a href="index.html">
                 Home
             </a>
 
-            <a
-                href="events.html"
-                class="active"
-            >
+            <a href="events.html">
                 Events
             </a>
 
@@ -187,15 +121,60 @@
                 Announcements
             </a>
 
+            <a
+                href="clubs.html"
+                class="active"
+            >
+                Clubs
+            </a>
+
             <a href="about.html">
                 About
             </a>
 
         </nav>
 
-    </header>
+
+        <!-- RIGHT SIDE -->
+        <div class="topbar-actions">
+
+            <button
+                class="icon-btn"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+            >
+                ☰
+            </button>
+
+            <div id="authArea"></div>
+
+        </div>
+
+    </div>
 
 
+    <!-- MOBILE NAV -->
+    <div
+        class="mobilenav"
+        id="mobileNav"
+    >
+
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="ask-seniors.html">Ask &amp; Learn</a>
+        <a href="resources.html">Resources</a>
+        <a href="bus-routes.html">Bus Routes</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="clubs.html" class="active">Clubs</a>
+        <a href="about.html">About</a>
+
+    </div>
+
+</header>
 
     <!-- =====================================================
          MAIN

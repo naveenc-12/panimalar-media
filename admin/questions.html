@@ -70,72 +70,6 @@
            SIDEBAR
         ====================================================== */
 
-        .admin-sidebar {
-            width: 280px;
-            min-width: 280px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-
-            display: flex;
-            flex-direction: column;
-
-            padding: 28px 20px 20px;
-
-            background: #0b0c11;
-            border-right: 1px solid #20212a;
-
-            overflow-y: auto;
-            z-index: 100;
-        }
-
-        .admin-brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            padding: 8px 12px 30px;
-        }
-
-        .admin-logo {
-            width: 54px;
-            height: 54px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 16px;
-
-            background: linear-gradient(
-                135deg,
-                #8b5cf6,
-                #ec4899
-            );
-
-            color: white;
-            font-size: 18px;
-            font-weight: 800;
-
-            box-shadow:
-                0 10px 30px rgba(139, 92, 246, 0.25);
-        }
-
-        .admin-brand strong {
-            display: block;
-            color: #fff;
-            font-size: 18px;
-            line-height: 1.2;
-        }
-
-        .admin-brand span {
-            display: block;
-            margin-top: 5px;
-
-            color: #777987;
-            font-size: 13px;
-        }
 
         /* =====================================================
            NAVIGATION
@@ -1012,98 +946,200 @@
 
 <div class="admin-layout">
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
 
-    <aside class="admin-sidebar">
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
 
-        <div class="admin-brand">
+        <aside class="admin-sidebar">
 
-            <div class="admin-logo">
-                PM
+            <!-- BRAND -->
+            <div class="admin-sidebar-brand">
+
+                <div class="admin-sidebar-logo">
+                    PM
+                </div>
+
+                <div class="admin-sidebar-brand-text">
+
+                    <strong>
+                        Panimalar Media
+                    </strong>
+
+                    <span>
+                        Admin Panel
+                    </span>
+
+                </div>
+
             </div>
 
-            <div>
-                <strong>Panimalar Media</strong>
-                <span>Admin Panel</span>
+
+            <!-- NAVIGATION -->
+            <nav class="admin-nav">
+
+                <!-- OVERVIEW -->
+                <div class="admin-nav-section">
+                    Overview
+                </div>
+
+                <a
+                    href="dashboard.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <!-- CONTENT -->
+                <div class="admin-nav-section">
+                    Content
+                </div>
+
+                <a
+                    href="announcements.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        !
+                    </span>
+
+                    <span>
+                        Announcements
+                    </span>
+                </a>
+
+                <a
+                    href="events.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Events
+                    </span>
+                </a>
+
+                <a
+                    href="resources.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▤
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
+                </a>
+
+                <a
+                    href="gallery.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▧
+                    </span>
+
+                    <span>
+                        Gallery
+                    </span>
+                </a>
+
+                <a
+                    href="bus-routes.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ▱
+                    </span>
+
+                    <span>
+                        Bus Routes
+                    </span>
+                </a>
+
+                <a
+                    href="clubs.html"
+                    class="admin-nav-item"
+                >
+                    <span class="admin-nav-icon">
+                        ◆
+                    </span>
+
+                    <span>
+                        Clubs
+                    </span>
+                </a>
+
+
+                <!-- COMMUNITY -->
+                <div class="admin-nav-section">
+                    Community
+                </div>
+
+                <a
+                    href="questions.html"
+                    class="admin-nav-item active"
+                >
+                    <span class="admin-nav-icon">
+                        ?
+                    </span>
+
+                    <span>
+                        Questions
+                    </span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+            <div class="admin-sidebar-bottom">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-user-avatar"
+                        id="adminUserAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-info">
+
+                        <strong id="adminUserName">
+                            Admin
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                >
+                    Sign out
+                </button>
+
             </div>
 
-        </div>
-
-
-        <nav class="admin-nav">
-
-            <div class="nav-section-title">
-                OVERVIEW
-            </div>
-
-            <a href="dashboard.html" class="admin-nav-item">
-                <span class="nav-icon">▦</span>
-                Dashboard
-            </a>
-
-
-            <div class="nav-section-title">
-                CONTENT
-            </div>
-
-            <a href="events.html" class="admin-nav-item">
-                <span class="nav-icon">◷</span>
-                Events
-            </a>
-
-            <a href="announcements.html" class="admin-nav-item">
-                <span class="nav-icon">!</span>
-                Announcements
-            </a>
-
-            <a href="resources.html" class="admin-nav-item">
-                <span class="nav-icon">▤</span>
-                Resources
-            </a>
-
-            <a href="gallery.html" class="admin-nav-item">
-                <span class="nav-icon">▧</span>
-                Gallery
-            </a>
-
-            <a href="bus-routes.html" class="admin-nav-item">
-                <span class="nav-icon">▱</span>
-                Bus Routes
-            </a>
-
-            <a href="questions.html" class="admin-nav-item active">
-                <span class="nav-icon">?</span>
-                Questions
-            </a>
-
-        </nav>
-
-
-        <div class="admin-user">
-
-            <div class="admin-user-avatar">
-                P
-            </div>
-
-            <div class="admin-user-info">
-                <strong>Panimalar Media Admin</strong>
-                <span>Administrator</span>
-            </div>
-
-        </div>
-
-
-        <button
-            id="signOutBtn"
-            class="signout-btn"
-            type="button"
-        >
-            Sign out
-        </button>
-
-    </aside>
+        </aside>
 
 
     <!-- =====================================================
