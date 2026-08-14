@@ -1047,7 +1047,7 @@ function setupLogout() {
 
 
                 window.location.href =
-                    "login.html";
+                    "index.html";
 
 
             } catch (error) {

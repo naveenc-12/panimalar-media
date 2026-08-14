@@ -11,6 +11,11 @@ ADMIN AUTHENTICATION
 
     const ADMIN_DASHBOARD = "dashboard.html";
 
+
+    /* =====================================================
+       LOGIN ELEMENTS
+    ====================================================== */
+
     const loginForm =
         document.getElementById("adminLoginForm");
 
@@ -107,8 +112,78 @@ ADMIN AUTHENTICATION
 
         return (
             page === "index.html" ||
-            page === "" ||
-            page === "login.html"
+            page === ""
+        );
+    }
+
+
+    /* =====================================================
+       LOGOUT BUTTON
+    ====================================================== */
+
+    function setupLogout() {
+
+        const logoutButton =
+            document.getElementById("adminLogoutButton") ||
+            document.getElementById("signOutBtn");
+
+        if (!logoutButton) {
+            return;
+        }
+
+        /*
+        Prevent attaching the listener more than once.
+        */
+        if (logoutButton.dataset.logoutReady === "true") {
+            return;
+        }
+
+        logoutButton.dataset.logoutReady = "true";
+
+
+        logoutButton.addEventListener(
+            "click",
+            async function (event) {
+
+                event.preventDefault();
+
+                const confirmed = confirm(
+                    "Are you sure you want to sign out?"
+                );
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                logoutButton.disabled = true;
+
+
+                try {
+
+                    await supabaseClient.auth.signOut();
+
+                } catch (error) {
+
+                    console.error(
+                        "Logout error:",
+                        error
+                    );
+
+                }
+
+
+                /*
+                The login page is:
+                /admin/index.html
+
+                Since every admin page is already inside
+                /admin/, this correctly resolves to:
+                /admin/index.html
+                */
+
+                window.location.href = "index.html";
+            }
         );
     }
 
@@ -137,7 +212,7 @@ ADMIN AUTHENTICATION
                     error
                 );
 
-                return;
+                return false;
             }
 
 
@@ -156,7 +231,7 @@ ADMIN AUTHENTICATION
             if (isLoginPage()) {
 
                 if (!session) {
-                    return;
+                    return true;
                 }
 
 
@@ -171,15 +246,20 @@ ADMIN AUTHENTICATION
                     window.location.href =
                         ADMIN_DASHBOARD;
 
-                    return;
+                    return false;
                 }
 
+
+                /*
+                Logged-in user is not an admin.
+                Sign them out.
+                */
 
                 await supabaseClient
                     .auth
                     .signOut();
 
-                return;
+                return true;
             }
 
 
@@ -187,9 +267,6 @@ ADMIN AUTHENTICATION
             -------------------------------------------------
             OTHER ADMIN PAGES
             -------------------------------------------------
-            Do NOT redirect to dashboard.
-
-            Just make sure the user is logged in.
             */
 
             if (!session) {
@@ -197,7 +274,7 @@ ADMIN AUTHENTICATION
                 window.location.href =
                     "index.html";
 
-                return;
+                return false;
             }
 
 
@@ -216,8 +293,14 @@ ADMIN AUTHENTICATION
                 window.location.href =
                     "index.html";
 
-                return;
+                return false;
             }
+
+
+            /*
+            Valid admin session.
+            */
+            return true;
 
         } catch (error) {
 
@@ -225,6 +308,8 @@ ADMIN AUTHENTICATION
                 "Session check failed:",
                 error
             );
+
+            return false;
         }
     }
 
@@ -239,10 +324,12 @@ ADMIN AUTHENTICATION
 
         hideError();
 
+
         const email =
             emailInput
                 ? emailInput.value.trim()
                 : "";
+
 
         const password =
             passwordInput
@@ -324,7 +411,9 @@ ADMIN AUTHENTICATION
 
 
             /*
-            Verify admin role
+            -------------------------------------------------
+            VERIFY ADMIN ROLE
+            -------------------------------------------------
             */
 
             const admin =
@@ -350,7 +439,9 @@ ADMIN AUTHENTICATION
 
 
             /*
-            Successful login
+            -------------------------------------------------
+            SUCCESSFUL LOGIN
+            -------------------------------------------------
             */
 
             window.location.href =
@@ -422,7 +513,7 @@ ADMIN AUTHENTICATION
 
 
     /* =====================================================
-       LOGOUT
+       LOGOUT FUNCTION
     ====================================================== */
 
     async function logout() {
@@ -462,6 +553,11 @@ ADMIN AUTHENTICATION
     }
 
 
+    /*
+    Make logout available globally
+    in case another admin script uses it.
+    */
+
     window.adminLogout = logout;
 
 
@@ -470,6 +566,10 @@ ADMIN AUTHENTICATION
     ====================================================== */
 
     async function init() {
+
+        /*
+        Make sure Supabase exists.
+        */
 
         if (
             typeof supabaseClient ===
@@ -488,12 +588,36 @@ ADMIN AUTHENTICATION
         }
 
 
-        await checkSession();
+        /*
+        -------------------------------------------------
+        CHECK SESSION
+        -------------------------------------------------
+        */
+
+        const authenticated =
+            await checkSession();
 
 
         /*
-        Only attach login handler
-        when the login form actually exists.
+        -------------------------------------------------
+        SETUP LOGOUT
+        -------------------------------------------------
+        
+        THIS WAS MISSING IN YOUR ORIGINAL FILE.
+
+        Every admin page will now automatically
+        connect its logout button.
+        */
+
+        if (authenticated) {
+            setupLogout();
+        }
+
+
+        /*
+        -------------------------------------------------
+        LOGIN FORM
+        -------------------------------------------------
         */
 
         if (loginForm) {
